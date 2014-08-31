@@ -100,7 +100,7 @@ function estadoPersona(nidvalor) {
 }
 
 function asignarPermisos(nidvalor) {
-    msgLoading("#detalle_lista");
+    msgLoading("#editable_wrapper");
     $.ajax({
         type: "POST",
         url: "permisos/opciones",
@@ -109,7 +109,7 @@ function asignarPermisos(nidvalor) {
             nidvalor: nidvalor
         },
         success: function(data) {
-            $("#detalle_lista").html(data);
+            $("#editable_wrapper").html(data);
         },
         error: function() {
             alert("Ha ocurrido un error, vuelva a intentarlo.");

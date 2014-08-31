@@ -6,7 +6,8 @@
 <script src="<?php echo URL_GLOBALJS ?>/jquery-1.10.2.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/bootstrap.min.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/plugins/metisMenu/jquery.metisMenu.js"></script>
-
+<!--tables -->
+<script src="<?php echo URL_GLOBALJS ?>/plugins/jeditable/jquery.jeditable.js"></script>
 <!-- Flot -->
 <script src="<?php echo URL_GLOBALJS ?>/plugins/flot/jquery.flot.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/plugins/flot/jquery.flot.tooltip.min.js"></script>
@@ -36,6 +37,13 @@
 
 <!-- Sparkline demo data  -->
 <script src="<?php echo URL_GLOBALJS ?>/demo/sparkline-demo.js"></script>
+
+<script src="<?php echo URL_SCRIPTS ?>/jsGeneral.js"></script>
+
+<!-- Data Tables -->
+<script src="<?php echo URL_GLOBALJS ?>/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="<?php echo URL_GLOBALJS ?>/plugins/dataTables/dataTables.bootstrap.js"></script>
+
 
 <script>
     $(document).ready(function() {

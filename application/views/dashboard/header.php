@@ -21,6 +21,8 @@
 
         <link href="<?php echo URL_GLOBALCSS ?>/animate.css" rel="stylesheet">
         <link href="<?php echo URL_GLOBALCSS ?>/style.css" rel="stylesheet">
+        
+        <link href="<?php echo URL_GLOBALCSS ?>/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
     </head>
 
