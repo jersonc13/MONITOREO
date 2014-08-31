@@ -12,8 +12,8 @@ class Usuarios extends CI_Controller {
     }
 
     function _validaracceso() {
-        $logeado = $this->session->userdata('logeado');
-        $nidusuario = $this->session->userdata('ssnidusuario');
+        $logeado = $this->session->userdata('esta_logeado');
+        $nidusuario = $this->session->userdata('IDUsu');
 
         if ($logeado != true OR $nidusuario = null) {
             redirect(URL_MAIN);
@@ -21,11 +21,11 @@ class Usuarios extends CI_Controller {
     }
 
     function index() {
-        $data['listarUsuarios'] = $this->usuarios_model->da_listarUsuarios();
-        $data['listarRoles'] = $this->usuarios_model->da_listarRoles();
+//        $data['listarUsuarios'] = $this->usuarios_model->da_listarUsuarios();
+//        $data['listarRoles'] = $this->usuarios_model->da_listarRoles();
         $data['main_content'] = 'mantenedor/usuarios/panel_view';
         $data['titulo'] = 'Usuarios | SIM';
-        $this->load->view('master/plantilla_view', $data);
+        $this->load->view('dashboard/template', $data);
     }
 
     function registrarUsuarios() {

@@ -1,33 +1,6 @@
 <script src="<?php echo URL_ADMINPJS ?>/mantenedor/usuarios/jsUsuarios.js" type="text/javascript"></script>
 <div class="page-content">
     <!-- BEGIN PAGE HEADER-->
-    <div class="row">
-        <div class="col-md-12">
-            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-            <h3 class="page-title">
-                Usuarios
-            </h3>
-            <ul class="page-breadcrumb breadcrumb">
-                <li>
-                    <i class="fa fa-home"></i>
-                    <a href="index.html">
-                        Inicio </a>
-                    <i class="fa fa-angle-right"></i>
-                </li>
-                <li>
-                    <a href="#">
-                        Mantenedor </a>
-                    <i class="fa fa-angle-right"></i>
-                </li>
-                <li>
-                    <a href="#">
-                        Usuarios </a>
-                    <i class="fa fa-angle-right"></i>
-                </li>
-            </ul>
-            <!-- END PAGE TITLE & BREADCRUMB-->
-        </div>
-    </div>
     <!-- END PAGE HEADER-->
     <!-- BEGIN DASHBOARD STATS -->
     <div class="row">
