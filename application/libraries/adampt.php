@@ -2,9 +2,6 @@
 
 class adampt {
 
-
-
-
     //atributos   
     private $Parametros = array();
     private $pOUT1 = "aaaa";
@@ -25,14 +22,9 @@ class adampt {
         $this->serverName = SERVER_DB; //serverName\instanceName
         $this->connectionInfo = array("Database" => NAME_DB, "UID" => USSER_DB, "PWD" => PASS_DB, "CharacterSet" => 'UTF-8');
         //$this->connectionInfo = array("Database" => "bdMptIntegradaCI", "UID" => USSER_DB, "PWD" => PASS_DB, "CharacterSet" => 'UTF-8');
-
-
         // $connectionInfo = array("Database"=>"bdMptIntegrada", "UID"=>"desarrollo", "PWD"=>"@desarrollo123");                        
         $this->cn = sqlsrv_connect($this->serverName, $this->connectionInfo);
     }
-
-
-
 
     //metodos
     public function setParam($NomPar, $tipo = null) {
@@ -72,109 +64,121 @@ class adampt {
         $this->stmt = sqlsrv_prepare($this->cn, '{call ' . $pa . '(' . $param . ')}', $this->Parametros); // array( &$qty, &$id));
         //$this->stmt= sqlsrv_query($cn, "{call ".$pa."(".$param.")}",$this->Parametros);// array( &$qty, &$id));
         //sqlsrv_next_result($this->stmt);                 
-}
+    }
 
-public function ejecuta() {
-    $exec = sqlsrv_execute($this->stmt);
-    sqlsrv_next_result($this->stmt);
-    $this->Liberar();
-    return $exec;
-}
+    public function ejecuta() {
+        $exec = sqlsrv_execute($this->stmt);
+        sqlsrv_next_result($this->stmt);
+        $this->Liberar();
+        return $exec;
+    }
 
-public function next() {
-    $tem = array();
-    $exec = sqlsrv_execute($this->stmt);
-    $next_result = sqlsrv_next_result($this->stmt);
+    public function next() {
+        $tem = array();
+        $exec = sqlsrv_execute($this->stmt);
+        $next_result = sqlsrv_next_result($this->stmt);
         // if($ne){
-    while ($row = sqlsrv_fetch_array($this->stmt, SQLSRV_FETCH_ASSOC)) {
-        $tem[] = $row;
-    }
+        while ($row = sqlsrv_fetch_array($this->stmt, SQLSRV_FETCH_ASSOC)) {
+            $tem[] = $row;
+        }
         // }
-    return $tem;
-}
-
-public function consulta($pa) {
-
-    $param = '?';
-    if (count($this->Parametros) > 1) {
-        $param .= str_repeat(',?', count($this->Parametros) - 1);
-    } else if (count($this->Parametros) != 1) {
-        $param = '';
+        return $tem;
     }
+
+    public function consulta($pa) {
+
+        $param = '?';
+        if (count($this->Parametros) > 1) {
+            $param .= str_repeat(',?', count($this->Parametros) - 1);
+        } else if (count($this->Parametros) != 1) {
+            $param = '';
+        }
 
         $result = $this->stmt = sqlsrv_query($this->cn, '{call ' . $pa . '(' . $param . ')}', $this->Parametros); // array( &$qty, &$id));
-if ($result) {
-    $Elementos = array();
-    while ($row = sqlsrv_fetch_array($this->stmt, SQLSRV_FETCH_ASSOC)) {
-        $temp = array();
-        foreach ($row as $key => $value) {
-
+        if ($result) {
+            $Elementos = array();
+            while ($row = sqlsrv_fetch_array($this->stmt, SQLSRV_FETCH_ASSOC)) {
+                $temp = array();
+                foreach ($row as $key => $value) {
+                    
+                }
+                array_push($Elementos, $row);
+            }
+            $this->Liberar();
+            return $Elementos;
+        } else {
+            return false;
         }
-        array_push($Elementos, $row);
     }
-    $this->Liberar();
-    return $Elementos;
-} else {
-    return false;
-}
-}
 
-public function getCampo($pa, $indice) {
-    $param = '?';
-    if (count($this->Parametros) > 1)
-        $param .= str_repeat(',?', count($this->Parametros) - 1);
+    public function getCampo($pa, $indice) {
+        $param = '?';
+        if (count($this->Parametros) > 1)
+            $param .= str_repeat(',?', count($this->Parametros) - 1);
         $result = $this->stmt = sqlsrv_query($this->cn, '{call ' . $pa . '(' . $param . ')}', $this->Parametros); // array( &$qty, &$id));      
-if ($result) {
-    if ($this->stmt === false) {
-        die(print_r(sqlsrv_errors(), true));
+        if ($result) {
+            if ($this->stmt === false) {
+                die(print_r(sqlsrv_errors(), true));
+            }
+
+            if (sqlsrv_fetch($this->stmt) === false) {
+                die(print_r(sqlsrv_errors(), true));
+            }
+            $value = sqlsrv_get_field($this->stmt, $indice);
+            $this->Liberar();
+            return $value;
+        } else {
+            return false;
+        }
     }
 
-    if (sqlsrv_fetch($this->stmt) === false) {
-        die(print_r(sqlsrv_errors(), true));
-    }
-    $value = sqlsrv_get_field($this->stmt, $indice);
-    $this->Liberar();
-    return $value;
-} else {
-    return false;
-}
-}
-
-public function getFila($pa) {
-    $param = '?';
-    if (count($this->Parametros) > 1)
-        $param .= str_repeat(',?', count($this->Parametros) - 1);
+    public function getFila($pa) {
+        $param = '?';
+        if (count($this->Parametros) > 1)
+            $param .= str_repeat(',?', count($this->Parametros) - 1);
 
         $result = $this->stmt = sqlsrv_query($this->cn, '{call ' . $pa . '(' . $param . ')}', $this->Parametros); // array( &$qty, &$id));      
-if ($result) {
-    if ($this->stmt === false) {
-        die(print_r(sqlsrv_errors(), true));
+        if ($result) {
+            if ($this->stmt === false) {
+                die(print_r(sqlsrv_errors(), true));
+            }
+            $row = sqlsrv_fetch_array($this->stmt, SQLSRV_FETCH_ASSOC);
+            $this->Liberar();
+            return $row;
+        } else {
+            return false;
+        }
     }
-    $row = sqlsrv_fetch_array($this->stmt, SQLSRV_FETCH_ASSOC);
-    $this->Liberar();
-    return $row;
-} else {
-    return false;
-}
-}
 
-public function Liberar() {
-    sqlsrv_free_stmt($this->stmt);
-    unset($this->Parametros);
-}
-
-public function beginTran() {
-    if (sqlsrv_begin_transaction($this->con) === false) {
-        die(print_r(sqlsrv_errors(), true));
+    public function Liberar() {
+        sqlsrv_free_stmt($this->stmt);
+        unset($this->Parametros);
     }
-}
 
-public function commitTran() {
-    sqlsrv_commit($this->cn);
-}
+    public function beginTran() {
+        if (sqlsrv_begin_transaction($this->con) === false) {
+            die(print_r(sqlsrv_errors(), true));
+        }
+    }
 
-public function rollbackTran() {
-    sqlsrv_rollback($this->cn);
-}
+    public function commitTran() {
+        sqlsrv_commit($this->cn);
+    }
+
+    public function rollbackTran() {
+        sqlsrv_rollback($this->cn);
+    }
+
+    public function cargaropcionpadre() {
+        $CI = & get_instance();
+        $CI->load->model('dashboard/menu_model', 'cargaropcionpadre');
+        return $CI->cargaropcionpadre->da_cargaropcionpadre();
+    }
+
+    public function cargaropcionhijo() {
+        $CI = & get_instance();
+        $CI->load->model('dashboard/menu_model', 'cargaropcionhijo');
+        return $CI->cargaropcionhijo->da_cargaropcionhijo();
+    }
 
 }

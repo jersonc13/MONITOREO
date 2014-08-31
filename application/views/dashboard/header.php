@@ -50,28 +50,19 @@
                             </div>
 
                         </li>
-                        <li class="active">
-                            <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboardss</span> <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li class="active"><a href="index-2.html">Dashboard v.1</a></li>
-                                <li><a href="dashboard_2.html">Dashboard v.2</a></li>
-                            </ul>
-                        </li>
                         <?php
-//                print_r($cargaropcionpadre);
                         foreach ($cargaropcionpadre as $oppadre) {
                             ?>
                             <li>
-                                <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboardss</span> <span class="fa arrow"></span></a>
+                                <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label"><?php echo $oppadre['cAplNombre'] ?></span> <span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <?php
-//                             print_r($cargaropcionhijo);
                                     foreach ($cargaropcionhijo as $ophijo) {
-                                        if ($oppadre['nidopcion'] == $ophijo['nidhijo']) {
+                                        if ($oppadre['nAplId'] == $ophijo['nAplId']) {
                                             ?>
                                             <li>
-                                                <a href="<?php echo URL_MAIN . '/' . $ophijo['curl'] ?>">
-                                                    <?php echo $ophijo['copcion'] ?> </a>
+                                                <a href="<?php echo URL_MAIN . '/' . $ophijo['cOdetNombreArchivo'] ?>">
+                                                    <?php echo $ophijo['cObjNombre'] ?> </a>
                                             </li>
                                             <?php
                                         }
