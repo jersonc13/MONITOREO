@@ -45,16 +45,8 @@ class Permisos extends CI_Controller {
 
     function registrarOpciones() {
         $data = $this->input->post('json');
-        $prohibiciones = $data['chk_parametros_prohibiciones'];
-        print_r($prohibiciones);
-
-//        $validar = $this->areas_model->da_registrarAreas($_POST['txtAreas'], $_POST['txtAlias'], $_POST['cbo_dependencia']);
-//
-//        if ($validar) {
-//            echo $validar['msg'];
-//        } else {
-//            echo $validar['msg'];
-//        }
+        $opciones = $data['chk_opcioneshijos'];
+        $data['registrar'] = $this->permisos_model->registrarp($opciones);
     }
 
     function actualizarArea() {

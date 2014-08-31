@@ -17,7 +17,7 @@
 
                                         <?php
                                         foreach ($opcioneshijo as $ophijo2) {
-                                            if ($ophijo['nAplId'] == $ophijo2['nAplId']) {
+                                            if ($ophijo['nObjId'] == $ophijo2['nObjId']) {
                                                 $x = 1;
                                             }
                                             ?>

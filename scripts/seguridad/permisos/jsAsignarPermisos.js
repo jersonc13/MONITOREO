@@ -119,18 +119,18 @@ function asignarPermisos(nidvalor) {
 }
 
 function registrarPermisos() {
-    var chk_parametros_prohibiciones = "";
+    var chk_opcioneshijos = "";
     $("input[name='chk_opcioneshijos']:checked").each(function(index, value) {
-        chk_parametros_prohibiciones += this.id + "-";
+        chk_opcioneshijos += this.id + "-";
         ;
     });
-    chk_parametros_prohibiciones = chk_parametros_prohibiciones.substring(0, chk_parametros_prohibiciones.length - 1);
-    if (chk_parametros_prohibiciones == '') {
-        chk_parametros_prohibiciones = '0';
+    chk_opcioneshijos = chk_opcioneshijos.substring(0, chk_opcioneshijos.length - 1);
+    if (chk_opcioneshijos == '') {
+        chk_opcioneshijos = '0';
     }
 
     get_page('permisos/registrarOpciones/', 'detalle_lista', {
-        chk_parametros_prohibiciones: chk_parametros_prohibiciones
+        chk_opcioneshijos: chk_opcioneshijos
     })
 
 }
