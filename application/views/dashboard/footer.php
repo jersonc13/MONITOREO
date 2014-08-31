@@ -1,7 +1,6 @@
 
 </div>
 </div>
-
 <!-- Mainly scripts -->
 <script src="<?php echo URL_GLOBALJS ?>/jquery-1.10.2.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/bootstrap.min.js"></script>
@@ -43,6 +42,10 @@
 <!-- Data Tables -->
 <script src="<?php echo URL_GLOBALJS ?>/plugins/dataTables/jquery.dataTables.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+<!-- Validate -->
+<script src="<?php echo URL_GLOBALJS ?>/plugins/validate/jquery.validate.min.js" type="text/javascript"></script>
+<!-- <script src="<?php echo URL_GLOBALJS ?>/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script> -->
 
 
 <script>

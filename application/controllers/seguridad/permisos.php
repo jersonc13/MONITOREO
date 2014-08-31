@@ -7,17 +7,8 @@ class Permisos extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->_validaracceso();
+        $this->cargas->_validaracceso();
         $this->load->model('seguridad/permisos_model');
-    }
-
-    function _validaracceso() {
-        $logeado = $this->session->userdata('esta_logeado');
-        $nidusuario = $this->session->userdata('IDUsu');
-
-        if ($logeado != true OR $nidusuario = null) {
-            redirect(URL_MAIN);
-        }
     }
 
     function index() {

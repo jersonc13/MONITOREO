@@ -16,4 +16,14 @@ class Cargas {
         return $CI->cargaropcionhijo->da_cargaropcionhijo();
     }
 
+    public function _validaracceso() {
+        $CI = & get_instance();
+        $logeado = $CI->session->userdata('esta_logeado');
+        $nidusuario = $CI->session->userdata('IDUsu');
+
+        if ($logeado != true OR $nidusuario = null) {
+            redirect(URL_MAIN);
+        }
+    }
+
 }
