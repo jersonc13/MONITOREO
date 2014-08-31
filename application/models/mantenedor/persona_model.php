@@ -25,14 +25,14 @@ class Persona_model extends CI_Model {
 
 	public function da_registrar(){
 		
-		$this->adampt->Liberar();
+		// $this->adampt->Liberar();
 		$this->adampt->setParam( $this->cPerApellidoPaterno );
 		$this->adampt->setParam( $this->cPerApellidoMaterno );
 		$this->adampt->setParam( $this->cPerNombres );
 		$this->adampt->setParamOut1();
         $this->adampt->prepara('shm_per.USP_PER_I_PERSONA');
         $result = $this->adampt->ejecuta();	
-        $this->nPerId = $this->getParamOut1();
+        $this->nPerId = $this->adampt->getParamOut1();
 		return $this->adampt->getParamOut1();
 	}
 }

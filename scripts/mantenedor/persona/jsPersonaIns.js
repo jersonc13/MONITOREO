@@ -1,8 +1,19 @@
 $(function() {
-    // listarPersonas();
+    // alert("fsdf");
+    $("#txtnombre").bind({
+        blur:function(evt){
+            evt.preventDefault();
+            var nick = $("#txtnombre").val().charAt(0);
+            nick = nick+$("#txtapepaterno").val();
+            nick = nick+$("#txtapematerno").val().charAt(0);   
+            $("#txtuserName").val(nick);
+        }  
+    })       
     $("#frmPersonaIns").validate({
-        errorElement: 'span',
-        errorClass: 'help-block',
+        errorPlacement: function (error, element)
+        {
+            element.before(error);
+        },
         submitHandler: function(form) {
             $.ajax({
                 type: "POST",
@@ -11,8 +22,10 @@ $(function() {
                 success: function(data) {
                     if (data == '1') {
                         alert("Datos ingresados correctamente");
-                    } else {
-                        alert("Error al ingresar los datos");
+                    } else if(data=='3'){
+                        alert("Ocurrio un Error al crear el Usuario");
+                    }else{
+                        alert("Error General!! al ingresar los datos");
                     }
                 },
                 error: function(data) {
@@ -22,76 +35,47 @@ $(function() {
         },
         rules: {
             //account
-            username: {
+            txtapepaterno: {
                 minlength: 5,
                 required: true
             },
-            password: {
+            txtapematerno: {
                 minlength: 5,
                 required: true
             },
-            rpassword: {
+            txtnombre: {
                 minlength: 5,
-                required: true,
-                equalTo: "#submit_form_password"
+                required: true
             },
             //profile
-            fullname: {
+            txtuserName: {
                 required: true
             },
-            email: {
+            txtpassword: {
+                required: true
+            },
+            txtconfirm: {
                 required: true,
-                email: true
-            },
-            phone: {
-                required: true
-            },
-            gender: {
-                required: true
-            },
-            address: {
-                required: true
-            },
-            city: {
-                required: true
-            },
-            country: {
-                required: true
-            },
-            //payment
-            'payment[]': {
-                required: true,
-                minlength: 1
+                equalTo: "#txtpassword"
             }
-        },
-        highlight: function(element) { // hightlight error inputs
-            $(element)
-                    .closest('.form-group').removeClass('has-success').addClass('has-error'); // set error class to the control group
-        },
-        unhighlight: function(element) { // revert the change done by hightlight
-            $(element)
-                    .closest('.form-group').removeClass('has-error'); // set error class to the control group
         }
+        // highlight: function(element) { // hightlight error inputs
+        //     $(element)
+        //             .closest('.form-group').removeClass('has-success').addClass('has-error'); // set error class to the control group
+        // },
+        // unhighlight: function(element) { // revert the change done by hightlight
+        //     $(element)
+        //             .closest('.form-group').removeClass('has-error'); // set error class to the control group
+        // }
     });
 
-    $( "#dialog" ).dialog({
-        autoOpen: false,
-        show: {
-            effect: "blind",
-            duration: 1000
-        },
-        hide: {
-            effect: "explode",
-            duration: 1000
-        },
-        open:function(event,ui){
-            initializeMap();
-        },
-        close: function( event, ui ) {
-
-        }
-    });
 });
+function generaNick(){
+    var nick = $("#txtnombre").val().charAt(0);
+    nick = nick+$("#txtapepaterno").val();
+    nick = nick+$("#txtapematerno").val().charAt(0);   
+    $("#txtuserName").val(nick);
+}
 function listarPersonas() {
     msgLoading("#mostrar_qry");
     $.ajax({
@@ -105,105 +89,4 @@ function listarPersonas() {
             alert("Ha ocurrido un error, vuelva a intentarlo.");
         }
     });
-}
-
-function buscarDNI() {
-    $.ajax({
-        type: "POST",
-        url: "personanatural/buscarDNI",
-        cache: false,
-        data: {
-            txtDetalleDNI: $('#txtDetalleDNI').val()
-        },
-        success: function(data) {
-            $("#detalle_lista").html(data);
-//            alert(data);
-        },
-        error: function() {
-            alert("Ha ocurrido un error, vuelva a intentarlo.");
-        }
-    });
-}
-
-function RegistrarDatos() {
-    $.ajax({
-        type: "POST",
-        url: "personanatural/cargarprovincia",
-        cache: false,
-        data: {
-            idDepartamento: $('#cbo_departamento').val()
-        },
-        success: function(data) {
-            $("#div_provincia").html(data);
-//            alert(data);
-        },
-        error: function() {
-            alert("Ha ocurrido un error, vuelva a intentarlo.");
-        }
-    });
-}
-
-
-
-function cargaProvincia() {
-    $.ajax({
-        type: "POST",
-        url: "personanatural/cargarprovincia",
-        cache: false,
-        data: {
-            idDepartamento: $('#cbo_departamento').val()
-        },
-        success: function(data) {
-            $("#div_provincia").html(data);
-//            alert(data);
-        },
-        error: function() {
-            alert("Ha ocurrido un error, vuelva a intentarlo.");
-        }
-    });
-}
-
-function cargarDistrito() {
-    $.ajax({
-        type: "POST",
-        url: "personanatural/cargardistrito",
-        cache: false,
-        data: {
-            idProvincia: $('#cbo_provincia').val()
-        },
-        success: function(data) {
-            $("#div_distrito").html(data);
-//            alert(data);
-        },
-        error: function() {
-            alert("Ha ocurrido un error, vuelva a intentarlo.");
-        }
-    });
-}
-
-function estadoPersona(nidvalor) {
-    if (confirm('Esta seguro de editar este registro?')) {
-        msgLoading("#mostrar_qry");
-        $.ajax({
-            type: "POST",
-            url: "personanatural/estadoPersona",
-            cache: false,
-            data: {
-                nidvalor: nidvalor
-            },
-            success: function(data) {
-                switch (data) {
-                    case "0":
-                        alert("Ha ocurrido un error, vuelva a intentarlo.");
-                        break;
-                    case "1":
-                        listarPersonas();
-                        break;
-                }
-            },
-            error: function() {
-                alert("Ha ocurrido un error, vuelva a intentarlo.");
-            }
-        });
-    }
 }

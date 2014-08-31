@@ -9,6 +9,7 @@ class Persona extends CI_Controller {
         parent::__construct();
         $this->cargas->_validaracceso();
         $this->load->model('mantenedor/persona_model','objPersona');
+        $this->load->model('mantenedor/usuario_model','objUsuario');
     }
 
     function index() {
@@ -20,13 +21,21 @@ class Persona extends CI_Controller {
     }
 
     function registrar() {
+        $respuesta = 1;
         $this->objPersona->setApellidoPaterno( $this->input->post('txtapepaterno') );
         $this->objPersona->setApellidoMaterno( $this->input->post('txtapematerno') );
         $this->objPersona->setNombres( $this->input->post('txtnombre') );
 
         if ( $this->objPersona->da_registrar() ) {
+            $this->objUsuario->setCodigoPersona( $this->objPersona->getCodigo() );
+            $this->objUsuario->setUserName( $this->input->post('txtuserName') );
+            $this->objUsuario->setPassword( $this->input->post('txtpassword') );
+            $this->objUsuario->setTipo( $this->input->post('cboUserTipo') );
+            if ( !$this->objUsuario->da_registrar( ) )
+                $respuesta = 3;
         } else {
-            echo $validar['msg'];
+            $respuesta = 0;
         }
+        echo $respuesta;
     }
 }
