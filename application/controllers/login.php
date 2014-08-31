@@ -19,6 +19,8 @@ class Login extends CI_Controller {
         $txt_contrasena = trim($_POST['txt_contrasena']);
 
         $result = $this->login_model->da_enviardatos($txt_usuario, $txt_contrasena);
+        // print_p($result);
+        // exit();
         if ($result) {
 //            $valor = $this->login_model->da_ultimasesion($result['nidusuario']);
             $sesion_data = array(
