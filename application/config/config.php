@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://'.SERVER_AP.'/Monitoreo-ucv/';
+$config['base_url']	= 'http://'.SERVER_AP.'/'.SERVER_PY.'/';
 
 /*
 |--------------------------------------------------------------------------
