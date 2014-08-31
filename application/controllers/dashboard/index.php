@@ -14,11 +14,6 @@ class Index extends CI_Controller {
     public function index() {
         $data['main_content'] = 'dashboard/cuerpo';
         $data['titulo'] = 'Panel de Administración (P.A)';
-        $data['cargaropcionpadre'] = $this->menu_model->da_cargaropcionpadre();
-        $data['cargaropcionhijo'] = $this->menu_model->da_cargaropcionhijo();
-//        print_r($data['cargaropcionpadre']);
-//        print_r($data['cargaropcionhijo']);
-//        exit();
         $this->load->view('dashboard/template', $data);
     }
 

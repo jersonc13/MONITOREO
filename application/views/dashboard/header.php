@@ -53,6 +53,7 @@
 
                         </li>
                         <?php
+                        $cargaropcionpadre = $this->cargas->cargaropcionpadre();
                         foreach ($cargaropcionpadre as $oppadre) {
                             ?>
                             <li>
