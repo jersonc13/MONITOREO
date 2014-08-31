@@ -34,11 +34,12 @@ class Permisos extends CI_Controller {
     }
 
     function opciones() {
-        $nPerId = $_POST['nidvalor'];
+        $nUsuId = $_POST['nidvalor'];
         $data['opcionesp'] = $this->permisos_model->da_cargaropcionp();
         $data['opcionesh'] = $this->permisos_model->da_cargaropcionh();
-        $data['opcionespadre'] = $this->permisos_model->da_cargaropcionpadre($nPerId);
-        $data['opcioneshijo'] = $this->permisos_model->da_cargaropcionhijo($nPerId);
+        $data['opcionespadre'] = $this->permisos_model->da_cargaropcionpadre($nUsuId);
+        $data['opcioneshijo'] = $this->permisos_model->da_cargaropcionhijo($nUsuId);
+        $data['nUsuId'] = $nUsuId;
 //        print_r($data);
         $this->load->view('seguridad/permisos/menu_view', $data);
     }
@@ -46,7 +47,8 @@ class Permisos extends CI_Controller {
     function registrarOpciones() {
         $data = $this->input->post('json');
         $opciones = $data['chk_opcioneshijos'];
-        $data['registrar'] = $this->permisos_model->registrarp($opciones);
+        $txtidusuario = $data['txtidusuario'];
+        $data['registrar'] = $this->permisos_model->registrarp($txtidusuario,$opciones);
     }
 
     function actualizarArea() {

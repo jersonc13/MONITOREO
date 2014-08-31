@@ -1,4 +1,5 @@
 <?php
+
 class Cargas {
 
     //Crear menu de opciones por tipo de opciones

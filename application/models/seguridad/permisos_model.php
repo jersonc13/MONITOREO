@@ -30,10 +30,10 @@ class Permisos_model extends CI_Model {
         }
     }
     
-    function registrarp($opciones) {
-        $this->adampt->setParam($this->session->userdata('IDUsu'));
+    function registrarp($txtidusuario,$opciones) {
+        $this->adampt->setParam($txtidusuario);
         $this->adampt->setParam($opciones);
-        $query = $this->adampt->consulta('shm_seg.USP_SEG_S_APLICACION_USUARIO');
+        $query = $this->adampt->consulta('shm_seg.USP_SEG_U_PERMISOS_X_USUARIO');
         if (count($query) > 0) {
             return $query;
         } else {

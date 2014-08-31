@@ -1,6 +1,7 @@
 <div class="page-container">
     <div class="page-sidebar-wrapper">
         <div>
+            <input type="text" id="txtidusuario" name="txtidusuario" value="<?php echo $nUsuId ?>" class="form-control" />
             <ul>
                 <?php
                 foreach ($opcionesp as $oppadre) {

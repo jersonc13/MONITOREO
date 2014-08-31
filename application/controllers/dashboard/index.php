@@ -7,7 +7,7 @@ class Index extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('dashboard/menu_model');
+//        $this->load->model('dashboard/menu_model');
         $this->_Esta_logeado();
     }
 

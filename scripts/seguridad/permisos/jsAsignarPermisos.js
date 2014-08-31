@@ -130,7 +130,8 @@ function registrarPermisos() {
     }
 
     get_page('permisos/registrarOpciones/', 'detalle_lista', {
-        chk_opcioneshijos: chk_opcioneshijos
+        chk_opcioneshijos: chk_opcioneshijos,
+        txtidusuario: $('#txtidusuario').val()
     })
 
 }

@@ -24,7 +24,7 @@
                                         <td><?php echo $listar['cPerApellidoMaterno'] ?></td>
                                         <td><?php echo $listar['cPerNombres'] ?></td>
                                         <td><?php echo $listar['bPerEstado'] ?></td>
-                                        <td><a href="#" class="btn btn-sm blue" onclick="asignarPermisos(<?php echo $listar['nPerId'] ?>)"><i class="fa fa-edit"></i></a></td>
+                                        <td><a href="#" class="btn btn-sm blue" onclick="asignarPermisos(<?php echo $listar['nUsuId'] ?>)"><i class="fa fa-edit"></i></a></td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

@@ -54,6 +54,7 @@
                         </li>
                         <?php
                         $cargaropcionpadre = $this->cargas->cargaropcionpadre();
+                        $cargaropcionhijo = $this->cargas->cargaropcionhijo();
                         foreach ($cargaropcionpadre as $oppadre) {
                             ?>
                             <li>
