@@ -6,18 +6,18 @@
                 foreach ($opcionesp as $oppadre) {
                     ?>
                     <li>
-                        <?php echo $oppadre['copcion'] ?> 
+                        <?php echo $oppadre['cAplNombre'] ?> 
                         <ul>
                             <?php
                             foreach ($opcionesh as $ophijo) {
                                 $x = 0;
-                                if ($oppadre['nidopcion'] == $ophijo['nidhijo']) {
+                                if ($oppadre['nAplId'] == $ophijo['nAplId']) {
                                     ?>
                                     <li>
 
                                         <?php
                                         foreach ($opcioneshijo as $ophijo2) {
-                                            if ($ophijo['nidopcion'] == $ophijo2['nidopcion']) {
+                                            if ($ophijo['nAplId'] == $ophijo2['nAplId']) {
                                                 $x = 1;
                                             }
                                             ?>
@@ -25,14 +25,14 @@
                                         }
                                         if ($x == 1) {
                                             ?>
-                                            <input type="checkbox" checked="true" id="<?php echo $ophijo['nidopcion'] ?>" name="chk_opcioneshijos"> 
+                                            <input type="checkbox" checked="true" id="<?php echo $ophijo['nObjId'] ?>" name="chk_opcioneshijos"> 
                                             <?php
                                         } else {
                                             ?>
-                                            <input type="checkbox" id="<?php echo $ophijo['nidopcion'] ?>" name="chk_opcioneshijos"> 
+                                            <input type="checkbox" id="<?php echo $ophijo['nObjId'] ?>" name="chk_opcioneshijos"> 
                                             <?php
                                         }
-                                        echo $ophijo['copcion']
+                                        echo $ophijo['cObjNombre']
                                         ?> </a>
                                     </li>
                                     <?php
@@ -42,7 +42,7 @@
                         </ul>
                     </li>
                 <?php } ?>
-                    <input type="button" id="btngrabarpermisos" name="btngrabarpermisos" onclick="registrarPermisos()" value="Grabar" class="btn blue"/>
+                <input type="button" id="btngrabarpermisos" name="btngrabarpermisos" onclick="registrarPermisos()" value="Grabar" class="btn blue"/>
             </ul>
         </div>
     </div>
