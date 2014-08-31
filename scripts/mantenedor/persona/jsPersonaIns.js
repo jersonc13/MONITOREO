@@ -1,12 +1,12 @@
 $(function() {
-    listarPersonas();
-    $("#submit_form").validate({
+    // listarPersonas();
+    $("#frmPersonaIns").validate({
         errorElement: 'span',
         errorClass: 'help-block',
         submitHandler: function(form) {
             $.ajax({
                 type: "POST",
-                url: "personanatural/registrarPersonaNatural",
+                url: "persona/registrar",
                 data: $(form).serialize(),
                 success: function(data) {
                     if (data == '1') {
