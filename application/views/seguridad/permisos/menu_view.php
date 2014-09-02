@@ -1,7 +1,7 @@
 <div class="page-container">
     <div class="page-sidebar-wrapper">
         <div>
-            <input type="text" id="txtidusuario" name="txtidusuario" value="<?php echo $nUsuId ?>" class="form-control" />
+            <input type="hidden" id="txtidusuario" name="txtidusuario" value="<?php echo $nUsuId ?>" class="form-control" />
             <ul>
                 <?php
                 foreach ($opcionesp as $oppadre) {
@@ -17,12 +17,14 @@
                                     <li>
 
                                         <?php
+                                        if($opcioneshijo){
                                         foreach ($opcioneshijo as $ophijo2) {
                                             if ($ophijo['nObjId'] == $ophijo2['nObjId']) {
                                                 $x = 1;
                                             }
                                             ?>
                                             <?php
+                                        }
                                         }
                                         if ($x == 1) {
                                             ?>

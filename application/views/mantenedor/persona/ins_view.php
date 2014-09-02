@@ -41,14 +41,14 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Password *</label>
                         <div class="col-sm-6">
-                            <input id="txtpassword" name="txtpassword" type="text" class="form-control required">
+                            <input id="txtpassword" name="txtpassword" type="password" class="form-control required">
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Confirmar Password *</label>
                         <div class="col-sm-6">
-                            <input id="txtconfirm" name="txtconfirm" type="text" class="form-control required">
+                            <input id="txtconfirm" name="txtconfirm" type="password" class="form-control required">
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>

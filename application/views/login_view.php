@@ -23,7 +23,7 @@
                 <p>ACCESO AL SISTEMA</p>
                 <form id="frm_login" class="m-t" role="form" action="" method="post">
                     <div class="form-group">
-                        <input id="txt_usuario" name="txt_usuario" type="email" class="form-control" placeholder="Username" required="">
+                        <input id="txt_usuario" name="txt_usuario" class="form-control" placeholder="Username" required="">
                     </div>
                     <div class="form-group">
                         <input id="txt_contrasena" name="txt_contrasena" type="password" class="form-control" placeholder="Password" required="">

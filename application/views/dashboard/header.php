@@ -56,6 +56,7 @@
                         <?php
                         $cargaropcionpadre = $this->cargas->cargaropcionpadre();
                         $cargaropcionhijo = $this->cargas->cargaropcionhijo();
+                        if($cargaropcionpadre){
                         foreach ($cargaropcionpadre as $oppadre) {
                             ?>
                             <li>
@@ -75,7 +76,7 @@
                                     ?>
                                 </ul>
                             </li>
-                        <?php } ?>
+                        <?php } }?>
                     </ul>
 
                 </div>
