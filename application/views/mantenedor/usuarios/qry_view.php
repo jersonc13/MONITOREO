@@ -35,8 +35,8 @@
         </table>
     </div>
 </div>
-<script>
+<!--<script>
     jQuery(document).ready(function() {
         TableAdvanced.init();
     });
-</script>
+</script>-->
