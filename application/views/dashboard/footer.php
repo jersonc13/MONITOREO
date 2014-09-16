@@ -21,7 +21,9 @@
 <!-- Custom and plugin javascript -->
 <script src="<?php echo URL_GLOBALJS ?>/inspinia.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/plugins/pace/pace.min.js"></script>
-
+<!-- iCheck -->
+<script src="<?php echo URL_GLOBALJS ?>/plugins/iCheck/icheck.min.js"></script>
+<script src="<?php echo URL_GLOBALJS ?>/plugins/summernote/summernote.min.js"></script>
 <!-- jQuery UI -->
 <script src="<?php echo URL_GLOBALJS ?>/plugins/jquery-ui/jquery-ui.min.js"></script>
 
@@ -42,6 +44,8 @@
 <!-- Data Tables -->
 <script src="<?php echo URL_GLOBALJS ?>/plugins/dataTables/jquery.dataTables.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+
 
 <!-- Validate -->
 <script src="<?php echo URL_GLOBALJS ?>/plugins/validate/jquery.validate.min.js" type="text/javascript"></script>

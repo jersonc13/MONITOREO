@@ -5028,7 +5028,7 @@ button.note-editor .close {
   background-clip: padding-box;
   outline: none;
 }
-.modal-backdrop {
+/*.modal-backdrop {
   position: fixed;
   top: 0;
   right: 0;
@@ -5036,7 +5036,7 @@ button.note-editor .close {
   left: 0;
   z-index: 1030;
   background-color: #000000;
-}
+}*/
 .modal-backdrop.fade {
   opacity: 0;
   filter: alpha(opacity=0);

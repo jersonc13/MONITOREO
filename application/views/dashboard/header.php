@@ -22,7 +22,11 @@
 
         <link href="<?php echo URL_GLOBALCSS ?>/animate.css" rel="stylesheet">
         <link href="<?php echo URL_GLOBALCSS ?>/style.css" rel="stylesheet">
-        
+
+        <link href="<?php echo URL_GLOBALCSS ?>/plugins/iCheck/custom.css" rel="stylesheet">
+        <link href="<?php echo URL_GLOBALCSS ?>/plugins/summernote/summernote.css" rel="stylesheet">
+        <link href="<?php echo URL_GLOBALCSS ?>/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+
         <link href="<?php echo URL_GLOBALCSS ?>/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
     </head>
@@ -49,34 +53,36 @@
                                 </ul>
                             </div>
                             <div class="logo-element">
-                                IN+
+                                UCV
                             </div>
 
                         </li>
                         <?php
                         $cargaropcionpadre = $this->cargas->cargaropcionpadre();
                         $cargaropcionhijo = $this->cargas->cargaropcionhijo();
-                        if($cargaropcionpadre){
-                        foreach ($cargaropcionpadre as $oppadre) {
-                            ?>
-                            <li>
-                                <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label"><?php echo $oppadre['cAplNombre'] ?></span> <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <?php
-                                    foreach ($cargaropcionhijo as $ophijo) {
-                                        if ($oppadre['nAplId'] == $ophijo['nAplId']) {
-                                            ?>
-                                            <li>
-                                                <a href="<?php echo URL_MAIN . '/' . $ophijo['cOdetNombreArchivo'] ?>">
-                                                    <?php echo $ophijo['cObjNombre'] ?> </a>
-                                            </li>
-                                            <?php
+                        if ($cargaropcionpadre) {
+                            foreach ($cargaropcionpadre as $oppadre) {
+                                ?>
+                                <li>
+                                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label"><?php echo $oppadre['cAplNombre'] ?></span> <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <?php
+                                        foreach ($cargaropcionhijo as $ophijo) {
+                                            if ($oppadre['nAplId'] == $ophijo['nAplId']) {
+                                                ?>
+                                                <li>
+                                                    <a href="<?php echo URL_MAIN . '/' . $ophijo['cOdetNombreArchivo'] ?>">
+                                                        <?php echo $ophijo['cObjNombre'] ?> </a>
+                                                </li>
+                                                <?php
+                                            }
                                         }
-                                    }
-                                    ?>
-                                </ul>
-                            </li>
-                        <?php } }?>
+                                        ?>
+                                    </ul>
+                                </li>
+                            <?php }
+                        }
+                        ?>
                     </ul>
 
                 </div>
@@ -89,13 +95,13 @@
                             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                             <form role="search" class="navbar-form-custom" method="post" action="http://webapplayers.com/inspinia_admin-v1.2/search_results.html">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                                    <!--<input type="label" placeholder="Bienvenidos al Sistema" disabled="true"  class="form-control" name="top-search" id="top-search">-->
                                 </div>
                             </form>
                         </div>
                         <ul class="nav navbar-top-links navbar-right">
                             <li>
-                                <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                                <span class="m-r-sm text-muted welcome-message">Bienvenidos al Sistema de Monitoreo</span>
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -196,7 +202,7 @@
 
                             <li>
                                 <a href="../login">
-                                    <i class="fa fa-sign-out"></i>Log out
+                                    <i class="fa fa-sign-out"></i>Cerrar Sesión
                                 </a>
                             </li>
                         </ul>
