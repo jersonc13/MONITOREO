@@ -23,6 +23,12 @@
                             <input id="txtnombre" name="txtnombre" type="text" class="form-control required">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Email *</label>
+                        <div class="col-sm-10">
+                            <input id="txtemail" name="txtemail" type="text" class="form-control required">
+                        </div>
+                    </div>
                 </div>
                 <div class="hr-line-dashed"></div>
             </div>

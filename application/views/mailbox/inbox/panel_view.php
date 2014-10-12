@@ -12,8 +12,8 @@
                         <div class="space-25"></div>
                         <h5>Folders</h5>
                         <ul class="folder-list m-b-md" style="padding: 0">
-                            <li><a href="mailbox.html"> <i class="fa fa-inbox "></i> Bandeja <span class="label label-warning pull-right">16</span> </a></li>
-                            <li><a href="mailbox.html"> <i class="fa fa-envelope-o"></i> Enviados</a></li>
+                            <li><a href="<?php echo URL_MAIN?>/mailbox/inbox"> <i class="fa fa-inbox "></i> Bandeja <span class="label label-warning pull-right"><?php echo $bandeja_count[0]['bandeja_count'] ?></span> </a></li>
+                            <li><a href="#" onclick="enviadosmensaje()"> <i class="fa fa-envelope-o"></i> Enviados</a></li>
                             <li><a href="mailbox.html"> <i class="fa fa-certificate"></i> Importantes</a></li>
                             <li><a href="mailbox.html"> <i class="fa fa-file-text-o"></i> Borradores <span class="label label-danger pull-right">2</span></a></li>
                             <li><a href="mailbox.html"> <i class="fa fa-trash-o"></i> Eliminados</a></li>
@@ -45,9 +45,9 @@
         </div>
         <div class="col-lg-9 animated fadeInRight">
             <!--<div class="col-lg-9">-->
-                <div id="divinboxx" width="100%">
-                    <?php $this->load->view('mailbox/inbox/bandejaqry_view'); ?>    
-                </div>
+            <div id="divinboxx" width="100%">
+                <?php $this->load->view('mailbox/inbox/bandeja_qry'); ?>    
+            </div>
             <!--</div>-->
         </div>
     </div>

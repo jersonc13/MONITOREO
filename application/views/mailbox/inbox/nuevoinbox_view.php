@@ -17,11 +17,11 @@
         <form class="form-horizontal" method="get">
             <div class="form-group"><label class="col-sm-2 control-label">Para:</label>
 
-                <div class="col-sm-10"><input type="text" class="form-control" disabled="true" value="admin123@corporat.com"></div>
+                <div class="col-sm-10"><input type="text" id="txtemailreceptor" name="txtemailreceptor" class="form-control" disabled="true" value="admin123@corporat.com"></div>
             </div>
             <div class="form-group"><label class="col-sm-2 control-label">Asunto:</label>
 
-                <div class="col-sm-10"><input type="text" class="form-control" value=""></div>
+                <div class="col-sm-10"><input type="text" id="txtasunto" name="txtasunto" class="form-control" value=""></div>
             </div>
         </form>
 
@@ -41,7 +41,7 @@
         <div class="clearfix"></div>
     </div>
     <div class="mail-body text-right tooltip-demo">
-        <a href="mailbox.html" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> Enviar</a>
+        <a onclick="enviarmensaje()" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> Enviar</a>
         <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> Cancelar</a>
         <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Borrador</a>
     </div>
@@ -54,10 +54,10 @@
 
 <script>
     $(document).ready(function() {
-//        $('.i-checks').iCheck({
-//            checkboxClass: 'icheckbox_square-green',
-//            radioClass: 'iradio_square-green',
-//        });
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
 
 
         $('.summernote').summernote();

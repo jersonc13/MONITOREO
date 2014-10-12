@@ -9,77 +9,64 @@ class Inbox_model extends CI_Model {
         parent::__construct();
     }
 
-    function da_listarUsuarios() {
-        $instruccion = "CALL sim_sp_qry_usuarios ('qry_usuarios','');";
-        $query = $this->db->query($instruccion);
-        $this->db->close();
-        if ($query) {
-            return ($query->result_array());
+    public function da_registrarmail($txtemailreceptor,$txtasunto,$txtcontenido) {
+        $this->adampt->setParam($txtemailreceptor);
+        $this->adampt->setParam($txtasunto);
+        $this->adampt->setParam($txtcontenido);
+        $this->adampt->setParam($this->session->userdata('IDPer'));
+        $this->adampt->setParam(1);
+        $this->adampt->setParamOut1();
+        $this->adampt->prepara('shm_inc.USP_INC_I_REQUISITO');
+        $result = $this->adampt->ejecuta();
+        if($result){
+            return $this->adampt->getParamOut1();
+        }else{
+            return $this->adampt->getParamOut1();
+        }
+        
+    }
+    
+    function da_bandejamail() {
+        $this->adampt->setParam($this->session->userdata('IDPer'));
+        $query = $this->adampt->consulta("shm_inc.USP_INC_S_REQUISITO");
+        if (count($query) > 0) {
+            return $query;
         } else {
-            return 0;
+            return null;
         }
     }
     
-    function da_listarRoles() {
-        $instruccion = "CALL sim_sp_qry_cargarroles ('qry_rolesall','');";
-        $query = $this->db->query($instruccion);
-        $this->db->close();
-        if ($query) {
-            return ($query->result_array());
+    function da_enviadosmail() {
+        $this->adampt->setParam($this->session->userdata('IDPer'));
+        $query = $this->adampt->consulta("shm_inc.USP_INC_S_REQUISITO_enviados");
+        if (count($query) > 0) {
+            return $query;
         } else {
-            return 0;
+            return null;
         }
     }
     
-    function da_registrarUsuarios($txtdniruc, $txtusuario, $txtcontrasena, $cbo_tipousuarios) {
-        $instruccion = "CALL sim_sp_ins_usuarios('ins_usuarios','" . $txtdniruc . "','" . $txtusuario . "','" . $txtcontrasena . "','" . $cbo_tipousuarios . "');";
-        $query = $this->db->query($instruccion);
-        $this->db->close();
-        if ($query) {
-            return ($query->row_array());
+    function da_detalleemail($nidvalor) {
+        $this->adampt->setParam($this->session->userdata('IDPer'));
+        $this->adampt->setParam($nidvalor);
+        $query = $this->adampt->consulta("shm_inc.USP_INC_S_REQUISITO_detalle");
+        if (count($query) > 0) {
+            return $query;
         } else {
-            return 0;
+            return null;
         }
     }
-
-    function da_estadoAreas($nidarea) {
-
-        $instruccion = "CALL sim_sp_upd_usuarios ('upd_estadoUsuarios','" . $nidarea . "','','','');";
-
-        $query = $this->db->query($instruccion);
-        $this->db->close();
-
-        if ($query) {
-            return ($query->row_array());
+    
+    function da_bandejacount() {
+        $this->adampt->setParam($this->session->userdata('IDPer'));
+        $query = $this->adampt->consulta("shm_inc.USP_INC_S_REQUISITO_count");
+        if (count($query) > 0) {
+            return $query;
         } else {
-            return 0;
+            return null;
         }
     }
-
-    function dbeditarArea($nidganadores) {
-
-        $instruccion = "CALL SP_S_Ganadores ('edt_ganadores','" . $nidganadores . "');";
-
-        $query = $this->db->query($instruccion);
-        $this->db->close();
-
-        if ($query) {
-            return ($query->row_array());
-        } else {
-            return 0;
-        }
-    }
-
-    function dblistarareaxid($txtbuscarArea) {
-        $instruccion = "CALL sim_sp_qry_areas ('qry_areasxid','" . $txtbuscarArea . "');";
-        $query = $this->db->query($instruccion);
-        $this->db->close();
-        if ($query) {
-            return ($query->result_array());
-        } else {
-            return 0;
-        }
-    }
+    
 
 }
 

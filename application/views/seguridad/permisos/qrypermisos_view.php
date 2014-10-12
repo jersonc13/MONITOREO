@@ -18,14 +18,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($listarPersonas as $key => $listar) { ?>
-                                    <tr>
-                                        <td><?php echo $listar['cPerApellidoPaterno'] ?></td>
-                                        <td><?php echo $listar['cPerApellidoMaterno'] ?></td>
-                                        <td><?php echo $listar['cPerNombres'] ?></td>
-                                        <td><?php echo $listar['bPerEstado'] ?></td>
-                                        <td><a href="#" class="btn btn-sm blue" onclick="asignarPermisos(<?php echo $listar['nUsuId'] ?>)"><i class="fa fa-edit"></i></a></td>
-                                    </tr>
+                                <?php if ($listarPersonas) { ?>
+                                    <?php foreach ($listarPersonas as $key => $listar) { ?>
+                                        <tr>
+                                            <td><?php echo $listar['cPerApellidoPaterno'] ?></td>
+                                            <td><?php echo $listar['cPerApellidoMaterno'] ?></td>
+                                            <td><?php echo $listar['cPerNombres'] ?></td>
+                                            <td><?php echo $listar['bPerEstado'] ?></td>
+                                            <td><a href="#" class="btn btn-sm blue" onclick="asignarPermisos(<?php echo $listar['nUsuId'] ?>)"><i class="fa fa-edit"></i></a></td>
+                                        </tr>
+                                    <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>
