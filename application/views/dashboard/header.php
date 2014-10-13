@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>INSPINIA | Dashboard</title>
-
+        <script src="<?php echo URL_GLOBALJS ?>/jquery-1.10.2.js"></script>
         <link href="<?php echo URL_GLOBALCSS ?>/bootstrap.min.css" rel="stylesheet">
         <link href="<?php echo URL_GLOBALCSS ?>/font-awesome.css" rel="stylesheet">
 

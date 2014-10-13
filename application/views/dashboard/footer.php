@@ -2,7 +2,7 @@
 </div>
 </div>
 <!-- Mainly scripts -->
-<script src="<?php echo URL_GLOBALJS ?>/jquery-1.10.2.js"></script>
+
 <script src="<?php echo URL_GLOBALJS ?>/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/bootstrap.min.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/plugins/metisMenu/jquery.metisMenu.js"></script>
@@ -125,7 +125,7 @@
         );
     });
 </script>
-<script>
+<!--<script>
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function() {
@@ -141,7 +141,7 @@
     ga('create', 'UA-4625583-2', 'webapplayers.com');
     ga('send', 'pageview');
 
-</script>
+</script>-->
 </body>
 
 <!-- Mirrored from webapplayers.com/inspinia_admin-v1.2/ by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 04 Aug 2014 00:46:41 GMT -->
