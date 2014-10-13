@@ -21,71 +21,39 @@ class Inbox extends CI_Controller {
     }
 
     function index() {
-//        $data['listarUsuarios'] = $this->usuarios_model->da_listarUsuarios();
-//        $data['listarRoles'] = $this->usuarios_model->da_listarRoles();
         $data['main_content'] = 'mailbox/inbox/panel_view';
         $data['titulo'] = 'INBOX | SIM';
+        $data['bandeja_count'] = $this->inbox_model->da_bandejacount();
+        $data['resultado'] = $this->inbox_model->da_bandejamail();
         $this->load->view('dashboard/template', $data);
     }
-    
+
     function nuevoinbox() {
         $this->load->view('mailbox/inbox/nuevoinbox_view');
     }
 
-    function registrarUsuarios() {
-
-        $validar = $this->usuarios_model->da_registrarUsuarios($_POST['txtdniruc'], $_POST['txtusuario'], $_POST['txtcontrasena'], $_POST['cbo_tipousuarios']);
-
-        if ($validar) {
-            echo $validar['msg'];
-        } else {
-            echo $validar['msg'];
-        }
+    function bandejainbox() {
+        $data['resultado'] = $this->inbox_model->da_bandejamail();
+        $this->load->view('mailbox/inbox/bandeja_qry', $data);
     }
 
-    function actualizarArea() {
-
-        $txte_nidarea = $_POST['txte_nidarea'];
-        $txte_area = $_POST['txte_area'];
-        $txte_alias = $_POST['txte_alias'];
-
-        $validar = $this->area_model->dbactualizarArea($txte_nidarea, $txte_area, $txte_alias);
-
-        if ($validar) {
-            echo $validar['msg'];
-        } else {
-            echo $validar['msg'];
-        }
+    function enviadosinbox() {
+        $data['resultado'] = $this->inbox_model->da_enviadosmail();
+        $this->load->view('mailbox/inbox/bandeja_qry', $data);
     }
 
-    function listarUsuarios() {
-
-        $data['listarUsuarios'] = $this->usuarios_model->da_listarUsuarios();
-        $this->load->view('mantenedor/usuarios/qry_view', $data);
+    function enviarinbox() {
+        $txtemailreceptor = $_POST['txtemailreceptor'];
+        $txtasunto = $_POST['txtasunto'];
+        $txtcontenido = $_POST['txtcontenido'];
+        $result = $this->inbox_model->da_registrarmail($txtemailreceptor, $txtasunto, $txtcontenido);
+        $this->load->view('mailbox/inbox/nuevoinbox_view');
     }
 
-    function editarArea() {
-        $nidarea = $_POST['nidarea'];
-        $data['editarArea'] = $this->usuarios_model->dbeditarArea($nidarea);
-        $this->load->view('mante/area/upd_view', $data);
-    }
+    function detallemensaje() {
 
-    function estadoAreas() {
-        $nidarea = $_POST['nidusuarios'];
-        $result = $this->usuarios_model->da_estadoAreas($nidarea);
-
-        if ($result) {
-            echo 1;
-        } else {
-            echo 0;
-        }
-    }
-
-    function buscarAreas() {
-        $txtbuscarArea = $_POST['txtbuscarArea'];
-        $data['listarAreaxId'] = $this->usuarios_model->dblistarareaxid($txtbuscarArea);
-        $data['listarAreas'] = $this->usuarios_model->da_listarAreas();
-        $this->load->view('mantenedor/usuarios/upd_view', $data);
+        $data['result'] = $this->inbox_model->da_detalleemail($_POST['nidvalor']);
+        $this->load->view('mailbox/inbox/bandejadetalle_qry', $data);
     }
 
 }

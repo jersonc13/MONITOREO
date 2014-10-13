@@ -3,6 +3,7 @@
 </div>
 <!-- Mainly scripts -->
 <script src="<?php echo URL_GLOBALJS ?>/jquery-1.10.2.js"></script>
+<script src="<?php echo URL_GLOBALJS ?>/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/bootstrap.min.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/plugins/metisMenu/jquery.metisMenu.js"></script>
 <!--tables -->
@@ -25,7 +26,7 @@
 <script src="<?php echo URL_GLOBALJS ?>/plugins/iCheck/icheck.min.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/plugins/summernote/summernote.min.js"></script>
 <!-- jQuery UI -->
-<script src="<?php echo URL_GLOBALJS ?>/plugins/jquery-ui/jquery-ui.min.js"></script>
+
 
 <!-- GITTER -->
 <script src="<?php echo URL_GLOBALJS ?>/plugins/gritter/jquery.gritter.min.js"></script>

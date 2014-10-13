@@ -25,6 +25,7 @@ class Persona extends CI_Controller {
         $this->objPersona->setApellidoPaterno( $this->input->post('txtapepaterno') );
         $this->objPersona->setApellidoMaterno( $this->input->post('txtapematerno') );
         $this->objPersona->setNombres( $this->input->post('txtnombre') );
+        $this->objPersona->setMail( $this->input->post('txtemail') );
 
         if ( $this->objPersona->da_registrar() ) {
             $this->objUsuario->setCodigoPersona( $this->objPersona->getCodigo() );
