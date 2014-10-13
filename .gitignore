@@ -11,3 +11,4 @@ application/logs/*
 *.sublime-workspace
 
 application/config/constants.php
+application/config/config.php
