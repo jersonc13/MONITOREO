@@ -18,9 +18,9 @@
                                     <?php foreach ($listarMarca as $key => $listar) { ?>
                                         <tr>
                                             <td><?php echo $listar['cMarDescripcion'] ?></td>
-                                            <td><?php echo $listar['cMarEstado'] ?></td>
+                                            <td><?php echo $listar['estado'] ?></td>
                                             <td>
-                                                <a href="#" class="btn btn-sm blue" onclick="asignarPermisos(<?php echo $listar['nMarId'] ?>)"><i class="fa fa-edit"></i></a>
+                                                <a href="#" class="btn btn-sm blue" onclick="editarMarca(<?php echo $listar['nMarId'] ?>)"><i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     <?php } ?>

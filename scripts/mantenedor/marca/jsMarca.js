@@ -47,3 +47,24 @@ function listarMarca() {
         }
     });
 }
+
+
+function editarMarca(nidvalor) {
+    if (confirm('¿Desea Editar el registro?')) {
+        msgLoading("#mostrar_qry");
+        $.ajax({
+            type: "POST",
+            url: "marca/editarMarca",
+            cache: false,
+            data: {
+                nidvalor: nidvalor
+            },
+            success: function(data) {
+                $("#mostrar_qry").html(data);
+            },
+            error: function() {
+                alert("Ha ocurrido un error, vuelva a intentarlo.");
+            }
+        });
+    }
+}
