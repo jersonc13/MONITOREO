@@ -3,12 +3,12 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Marca extends CI_Controller {
+class Ambiente extends CI_Controller {
 
     function __construct() {
         parent::__construct();
         $this->_validaracceso();
-        $this->load->model('mantenedor/marca_model');
+        $this->load->model('mantenedor/ambiente_model');
     }
 
     function _validaracceso() {
@@ -21,14 +21,14 @@ class Marca extends CI_Controller {
     }
 
     function index() {
-        $data['main_content'] = 'mantenedor/marca/panel_view';
-        $data['titulo'] = 'Marca | Monitoreo';
+        $data['main_content'] = 'mantenedor/ambiente/panel_view';
+        $data['titulo'] = 'Ambiente | Monitoreo';
         $this->load->view('dashboard/template', $data);
     }
 
     function registrar() {
 
-        $validar = $this->marca_model->dbregistrar($_POST['txtnombremarca']);
+        $validar = $this->ambiente_model->dbregistrar($_POST['txtnombreambiente']);
 
         if ($validar) {
             echo "1";
@@ -37,16 +37,16 @@ class Marca extends CI_Controller {
         }
     }
 
-    function listarMarca() {
+    function listarAmbiente() {
 
-        $data['listarMarca'] = $this->marca_model->dblistarmarca('qry_all','1');
-        $this->load->view('mantenedor/marca/qry_view', $data);
+        $data['listarAmbiente'] = $this->ambiente_model->dblistarambiente('qry_all', '1');
+        $this->load->view('mantenedor/ambiente/qry_view', $data);
     }
-    
-    function editarMarca() {
+
+    function editarAmbiente() {
         $nidvalor = $_POST['nidvalor'];
-        $data['editarMarca'] = $this->marca_model->dblistarmarca('qry_id',$nidvalor);
-        $this->load->view('mantenedor/marca/upd_view', $data);
+        $data['editarAmbiente'] = $this->ambiente_model->dblistarambiente('qry_id', $nidvalor);
+        $this->load->view('mantenedor/ambiente/upd_view', $data);
     }
 
 }
