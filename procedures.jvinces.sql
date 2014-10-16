@@ -1,4 +1,7 @@
-ALTER PROCEDURE shm_inc.USP_INC_S_INCIDENCIAS 
+IF OBJECT_ID (N'shm_inc.USP_INC_S_INCIDENCIAS', N'P') IS NOT NULL
+DROP PROCEDURE shm_inc.USP_INC_S_INCIDENCIAS
+GO
+CREATE PROCEDURE shm_inc.USP_INC_S_INCIDENCIAS 
 	-- Add the parameters for the stored procedure here
 	@accion varchar(50), 
 	@codigo int = 0
@@ -20,6 +23,7 @@ BEGIN
 			inc.cIncEliminado<>1 and
 			inc.cIncEliminado<>3 and             
 			ei.bEinEliminado<>0   and inc.nEinId=1  
+		ORDER BY convert(varchar,inc.fIncFechaRegistro,108 ) DESC
 		END
 END
 GO
