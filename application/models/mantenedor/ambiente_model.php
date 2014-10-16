@@ -12,7 +12,7 @@ class Ambiente_model extends CI_Model {
     function dblistarambiente($tipo,$nidvalor) {
         $this->adampt->setParam($tipo);
         $this->adampt->setParam($nidvalor);
-        $query = $this->adampt->consulta('shm_inc.USP_INC_S_MARCA');
+        $query = $this->adampt->consulta('shm_inc.USP_INC_S_AMBIENTE');
         if (count($query) > 0) {
             return $query;
         } else {
@@ -20,10 +20,12 @@ class Ambiente_model extends CI_Model {
         }
     }
 
-    function dbregistrar($txtnombreambiente) {
-        $this->adampt->setParam($txtnombreambiente);
+    function dbregistrar($txttipoambiente,$txtambiente,$txtdescripcion) {
+        $this->adampt->setParam($txttipoambiente);
+        $this->adampt->setParam($txtambiente);
+        $this->adampt->setParam($txtdescripcion);
         $this->adampt->setParamOut1();
-        $this->adampt->prepara('shm_inc.USP_INC_I_MARCA');
+        $this->adampt->prepara('shm_inc.USP_INC_I_AMBIENTE');
         $result = $this->adampt->ejecuta();
         return $this->adampt->getParamOut1();
     }

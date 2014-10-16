@@ -28,7 +28,7 @@ class Ambiente extends CI_Controller {
 
     function registrar() {
 
-        $validar = $this->ambiente_model->dbregistrar($_POST['txtnombreambiente']);
+        $validar = $this->ambiente_model->dbregistrar($_POST['txttipoambiente'],$_POST['txtambiente'],$_POST['txtdescripcion']);
 
         if ($validar) {
             echo "1";
