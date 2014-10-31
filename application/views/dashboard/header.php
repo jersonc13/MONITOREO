@@ -54,6 +54,9 @@
                 setTimeout("mueveReloj()", 1000)
             }
         </script> 
+        <!-- <link href="<?php echo URL_GLOBALCSS ?>/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet"> -->
+        <link href="<?php echo URL_GLOBALCSS ?>/plugins/datapicker/datepicker3.css" rel="stylesheet">
+
     </head>
 
     <body onload="mueveReloj()">
