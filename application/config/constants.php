@@ -26,7 +26,7 @@ define('USSER_DB', 'sa');
 define('NAME_DB','sigpi');
 // define('SERVER_DB', '192.168.0.4');
 // define('PASS_DB', '@123');
-define('PASS_DB', '900709');
+define('PASS_DB', '1234');
 define('URL_GLOBALCSS', 'http://'.SERVER_AP.'/'.SERVER_PY.'/css');
 define('URL_GLOBALJS', 'http://'.SERVER_AP.'/'.SERVER_PY.'/js');
 define('URL_GLOBALIMG', 'http://'.SERVER_AP.'/'.SERVER_PY.'/img');
