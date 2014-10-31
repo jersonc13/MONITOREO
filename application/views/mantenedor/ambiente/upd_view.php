@@ -1,10 +1,26 @@
 <form id="frmMarcaUpd" action="#" class="form-horizontal">
-    <input type="hidden" id="txtidmarca" name="txtidmarca" class="form-control" value="<?php echo $editarMarca[0]['nMarId'] ?>">
+    <input type="hidden" id="txtidmarca" name="txtidmarca" class="form-control" value="<?php echo $editarAmbiente[0]['nAmbId'] ?>">
     <div class="form-group">
-        <label class="col-sm-2 control-label">Nombre</label>
-        
+        <label class="col-sm-2 control-label">Tipo de Ambiente</label>
         <div class="col-sm-10">
-            <input type="text" id="txtnombremarca" name="txtnombremarca" class="form-control" value="<?php echo $editarMarca[0]['cMarDescripcion'] ?>">
+            <select id="txttipoambiente" name="txttipoambiente" class="form-control">
+                <option value="Interno">Interno</option>
+                <option value="Externo">Externo</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Ambiente</label>
+
+        <div class="col-sm-10">
+            <input type="text" id="txtnombreambiente" name="txtnombreambiente" class="form-control" value="<?php echo $editarAmbiente[0]['cAmbiente'] ?>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Descripcion</label>
+
+        <div class="col-sm-10">
+            <input type="text" id="txtnombredescripcion" name="txtnombredescripcion" class="form-control" value="<?php echo $editarAmbiente[0]['cAmbDescripcion'] ?>">
         </div>
     </div>
     <div class="hr-line-dashed"></div>
@@ -13,12 +29,12 @@
 
         <div class="col-sm-10">
             <select class="form-control m-b" name="cboestado" id="cboestado">
-                <?php if($editarMarca[0]['cMarEstado'] == 1){?>
-                <option id="1" selected="true">Activo</option>
-                <option id="0">Inactivo</option>
+                <?php if ($editarAmbiente[0]['cAmbEstado'] == 1) { ?>
+                    <option value="1" selected="true">Activo</option>
+                    <option value="0">Inactivo</option>
                 <?php } else { ?>
-                <option id="0" selected="true">Inactivo</option>
-                <option id="1">Activo</option>
+                    <option value="0" selected="true">Inactivo</option>
+                    <option value="1">Activo</option>
                 <?php } ?>
             </select>
         </div>

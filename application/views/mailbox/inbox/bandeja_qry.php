@@ -19,10 +19,10 @@
             <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
 
         </div>
-        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
-        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
+        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" onclick="bandejamensaje()" title="Refresh inbox"><i class="fa fa-refresh"></i> Actualizar</button>
+<!--        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
         <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button>
-        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>
+        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>-->
 
     </div>
 </div>
@@ -42,6 +42,16 @@
                         <td class="text-right mail-date"><?php echo $lista['dReqFechaRegistro'] ?></td>
                     </tr>
                 <?php } elseif ($lista['cReqEstado'] == 'L') { ?>
+                    <tr class="read">
+                        <td class="check-mail">
+                            <input type="checkbox" class="i-checks">
+                        </td>
+                        <td class="mail-ontact"><a href="#" onclick="bandejadetallemensaje(<?php echo $lista['nReqId'] ?>)"><?php echo $lista['nombre'] ?></a></td>
+                        <td class="mail-subject"><a href="#" onclick="bandejadetallemensaje(<?php echo $lista['nReqId'] ?>)"><?php echo $lista['cReqAsunto'] ?></a></td>
+                        <td class=""><i class="fa fa-paperclip"></i></td>
+                        <td class="text-right mail-date"><?php echo $lista['dReqFechaRegistro'] ?></td>
+                    </tr>
+               <?php } elseif ($lista['cReqEstado'] == 'E') { ?>
                     <tr class="read">
                         <td class="check-mail">
                             <input type="checkbox" class="i-checks">

@@ -1,4 +1,5 @@
-<table class="table table-striped table-bordered table-hover " id="incidencias_table" >
+<?php if( $incidencias ){?>
+<able class="table table-striped table-bordered table-hover " id="incidencias_table" >
 	<thead>
 		<tr>
 			<th>Estado</th>
@@ -26,3 +27,4 @@
 		<?php } ?>
 	</tbody>
 </table>
+<?php } ?>

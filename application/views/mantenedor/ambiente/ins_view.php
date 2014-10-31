@@ -1,9 +1,11 @@
 <form id="frmAmbienteIns" action="#" class="form-horizontal">
     <div class="form-group">
         <label class="col-sm-2 control-label">Tipo de Ambiente</label>
-
         <div class="col-sm-10">
-            <input type="text" id="txttipoambiente" name="txttipoambiente" class="form-control">
+            <select id="txttipoambiente" name="txttipoambiente" class="form-control">
+                <option value="Interno">Interno</option>
+                <option value="Externo">Externo</option>
+            </select>
         </div>
     </div>
     <div class="form-group">

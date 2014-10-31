@@ -1,12 +1,12 @@
 <div class="panel blank-panel">
 
     <div class="panel-heading">
-        <div class="panel-title m-b-md"><h4>Blank Panel with text tabs</h4></div>
+        <div class="panel-title m-b-md"><h4>Registro de Personas</h4></div>
         <div class="panel-options">
 
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#tab-1">Registrar</a></li>
-                <li class=""><a data-toggle="tab" href="#tab-2">Consolidado</a></li>
+                <!--<li class=""><a data-toggle="tab" href="#tab-2">Consolidado</a></li>-->
             </ul>
         </div>
     </div>

@@ -31,12 +31,35 @@ class Inbox extends CI_Controller {
     function nuevoinbox() {
         $this->load->view('mailbox/inbox/nuevoinbox_view');
     }
-
+    
+    function reenviarinbox() {
+        $data['txtcorreo'] = $_POST['txtcorreo'];
+        $data['txtcontenido'] = $_POST['txtcontenido'];
+        $this->load->view('mailbox/inbox/reenviar_view',$data);
+    }
+    function responderinbox() {
+        $data['txtcorreo'] = $_POST['txtcorreo'];
+        $data['txtcontenido'] = $_POST['txtcontenido'];
+        $this->load->view('mailbox/inbox/responder_view',$data);
+    }
+    
     function bandejainbox() {
         $data['resultado'] = $this->inbox_model->da_bandejamail();
         $this->load->view('mailbox/inbox/bandeja_qry', $data);
     }
-
+    
+    function eliminarinbox() {
+        
+        $this->inbox_model->da_eliminarmail($_POST['txtid']);
+        $data['resultado'] = $this->inbox_model->da_bandejamail();
+        $this->load->view('mailbox/inbox/bandeja_qry', $data);
+    }
+    
+    
+    function eliminadosinbox() {
+        $data['resultado'] = $this->inbox_model->da_eliminadosmail();
+        $this->load->view('mailbox/inbox/bandeja_qry', $data);
+    }
     function enviadosinbox() {
         $data['resultado'] = $this->inbox_model->da_enviadosmail();
         $this->load->view('mailbox/inbox/bandeja_qry', $data);

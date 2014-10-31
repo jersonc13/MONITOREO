@@ -25,6 +25,15 @@ class Inbox_model extends CI_Model {
         }
         
     }
+    function da_eliminarmail($id) {
+        $this->adampt->setParam($id);
+        $query = $this->adampt->consulta("shm_inc.USP_INC_U_REQUISITO_eliminar");
+        if (count($query) > 0) {
+            return $query;
+        } else {
+            return null;
+        }
+    }
     
     function da_bandejamail() {
         $this->adampt->setParam($this->session->userdata('IDPer'));
@@ -39,6 +48,15 @@ class Inbox_model extends CI_Model {
     function da_enviadosmail() {
         $this->adampt->setParam($this->session->userdata('IDPer'));
         $query = $this->adampt->consulta("shm_inc.USP_INC_S_REQUISITO_enviados");
+        if (count($query) > 0) {
+            return $query;
+        } else {
+            return null;
+        }
+    }
+    function da_eliminadosmail() {
+        $this->adampt->setParam($this->session->userdata('IDPer'));
+        $query = $this->adampt->consulta("shm_inc.USP_INC_S_REQUISITO_eliminados");
         if (count($query) > 0) {
             return $query;
         } else {

@@ -36,15 +36,15 @@ $(function() {
         rules: {
             //account
             txtapepaterno: {
-                minlength: 5,
+//                minlength: 5,
                 required: true
             },
             txtapematerno: {
-                minlength: 5,
+//                minlength: 5,
                 required: true
             },
             txtnombre: {
-                minlength: 5,
+//                minlength: 5,
                 required: true
             },
             //profile

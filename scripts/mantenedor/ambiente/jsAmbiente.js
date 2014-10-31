@@ -14,6 +14,7 @@ $(function() {
                 success: function(data) {
                     if (data == '1') {
                         alert("Datos ingresados correctamente");
+                        document.getElementById("frmAmbienteIns").reset();
                     } else {
                         alert("Error General!! al ingresar los datos");
                     }
