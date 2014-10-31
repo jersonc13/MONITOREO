@@ -35,7 +35,6 @@
                 hora = momentoActual.getHours()
                 minuto = momentoActual.getMinutes()
                 segundo = momentoActual.getSeconds()
-
                 str_segundo = new String(segundo)
                 if (str_segundo.length == 1)
                     segundo = "0" + segundo
