@@ -47,6 +47,7 @@
 <script src="<?php echo URL_GLOBALJS ?>/plugins/dataTables/dataTables.bootstrap.js"></script>
 
 
+<script src="<?php echo URL_GLOBALJS ?>/plugins/datapicker/bootstrap-datepicker.js"></script>
 
 <!-- Validate -->
 <script src="<?php echo URL_GLOBALJS ?>/plugins/validate/jquery.validate.min.js" type="text/javascript"></script>
@@ -54,11 +55,12 @@
 
 
 <script>
+
     $(document).ready(function() {
         WinMove();
         setTimeout(function() {
             $.gritter.add({
-                title: 'You have two new messages',
+                title: 'Tienes 2 Mensajes Nuevos',
                 text: 'Go to <a href="mailbox.html" class="text-warning">Mailbox</a> to see who wrote to you.<br/> Check the date and today\'s tasks.'
             });
         }, 2000);

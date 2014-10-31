@@ -1,10 +1,10 @@
 <table class="table table-striped table-bordered table-hover " id="incidencias_table" >
 	<thead>
 		<tr>
-			<th>Estado</th>
-			<th>Usuario</th>
-			<th>Incidencia</th>
-			<th>Fecha</th>
+			<th>Recurso Solicitado</th>
+			<th>Motivo</th>
+			<th>Fecha a Separar</th>
+			<th>Solicitante</th>
 			<th>Opciones</th>
 		</tr>
 	</thead>
@@ -12,12 +12,12 @@
 		<?php if ($incidencias) { ?>
 		<?php foreach ($incidencias as $key => $listar) { ?>
 		<tr>
-			<td><?php echo $listar['cEinDescripcion'] ?></td>
-			<td><?php echo $listar['Usuario'] ?></td>
-			<td><?php echo $listar['cIncAsunto'] ?></td>
-			<td><?php echo $listar['fIncFechaRegistro'] ?></td>
+			<td><?php echo $listar['cTreDescripcion'] ?></td>
+			<td><?php echo $listar['cReMotivo'] ?></td>
+			<td><?php echo $listar['fechas'] ?></td>
+			<td><?php echo $listar['nombre'] ?></td>
 			<td>
-				<a href="#" class="btn btn-sm blue" onclick="verDetalle(<?php echo $listar['nIncId'] ?>)" >
+				<a href="#" class="btn btn-sm blue" onclick="verDetalle(<?php echo $listar['nReId'] ?>)" >
 					<i class="fa fa-edit"></i>
 				</a>
 			</td>

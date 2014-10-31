@@ -9,7 +9,7 @@ window.onload = function() {
 
 function actualizargrilla() {
     get_page('incidencia/vistaGet/TODASINCIDENCIAS', 'mostrar_qry');
-}  
+}
 $(document).ajaxComplete(function( event, xhr, settings ){
 	console.log("termino de cargar");
 	cantidad_filas_sonido();

@@ -42,7 +42,7 @@
                             Solicitar </a>
                     </li>
                     <li>
-                        <a href="#tab_0" data-toggle="tab">
+                        <a href="#tab_0" data-toggle="tab" id="listar_anc">
                             Incidencias Generadas </a>
                     </li>
                     <!-- <li >
@@ -64,7 +64,9 @@
                                         <div class="ibox float-e-margins">
                                             <div class="ibox-content">
                                                 <div id="mostrar_qry" >
-                                                    <?php $this->load->view('procesos/requerimiento/qry_view') ?>
+                                                    <?php 
+                                                    // $this->load->view('procesos/requerimiento/qry_view') 
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>

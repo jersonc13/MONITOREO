@@ -14,9 +14,9 @@ class Requerimiento extends CI_Controller {
 		$data['FirtLoad']     = "FL";
 		$data['main_content'] = 'procesos/requerimiento/panel_view';
 		$data['titulo']       = 'Panel de Administración Incidencias(P.A)';
-		$this->objIncidencia->set_accion('nuevos');
+		$this->objRecurso->set_accion('nuevos');
 		$data['tiposRecurso']  = $this->objRecurso->listarTipos();
-		$data['incidencias']  = $this->objIncidencia->listar();
+		$data['incidencias']  = $this->objRecurso->listar();
 		$this->load->view('dashboard/template', $data);
 	}
 	function vistaGet( $accion ){
@@ -26,10 +26,24 @@ class Requerimiento extends CI_Controller {
 			$accion = $this->input->post('accion');
 
 		if($accion == "TODASINCIDENCIAS") {
-			$this->objIncidencia->set_accion('nuevos');
+			$this->objRecurso->set_accion('nuevos');
 		}
-		$data['incidencias'] = $this->objIncidencia->listar();
+		$data['incidencias'] = $this->objRecurso->listar();
 		$this->load->view('procesos/requerimiento/qry_view',$data);
+	}
+
+	function registrar(){
+		$nPerId       = $this->session->userdata('IDPer');
+		$tipo         = $this->input->post('cboTipoRec');
+		$txtcontenido = $this->input->post('txtcontenido');
+		$txtfecha     = $this->input->post('txtfecha');
+		$rpt = 0;
+		if( $this->objRecurso->registrar($nPerId,$tipo,$txtcontenido,$txtfecha) ){
+			$rpt = 1;
+		}else{
+			$rpt = 0;
+		}
+		echo $rpt;
 	}
 
 }

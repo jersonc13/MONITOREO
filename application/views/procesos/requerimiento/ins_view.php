@@ -14,7 +14,7 @@
 
 	<div class="mail-body">
 
-		<form class="form-horizontal" method="get">
+		<form class="form-horizontal" method="get" id="frmRequisitos">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Tipo Recurso</label>
 				<div class="col-sm-10">
@@ -23,12 +23,6 @@
 							<option value="<?php echo $fila['nTreId'] ?>"><?php echo $fila['cTreDescripcion'] ?></option>
 						<?php endforeach ?>
 					</select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Asunto:</label>
-				<div class="col-sm-10">
-					<input type="text" id="txtasunto" name="txtasunto" class="form-control" value="">
 				</div>
 			</div>
 			<div class="form-group" id="data_1">
@@ -43,11 +37,8 @@
 		</form>
 
 	</div>
-
 	<div class="mail-text h-200">
-		<div class="summernote">
-			<!-- Descripcion -->
-		</div>
+		<div class="summernote"></div>
 		<div class="clearfix"></div>
 	</div>
 	<div class="mail-body text-right tooltip-demo">
@@ -61,12 +52,8 @@
 
 </div>
 <!-- SUMMERNOTE -->
-<script src="<?php echo URL_JS ?>/bootstrap.min.js"></script>
-<link href="<?php echo URL_GLOBALCSS ?>/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
-<link href="<?php echo URL_GLOBALCSS ?>/plugins/datapicker/datepicker3.css" rel="stylesheet">
-<script src="<?php echo URL_SCRIPTSGENERALES ?>/datapicker/bootstrap-datepicker.js"></script>
 <script>
-	$(document).ready(function() {	
+	$(document).ready(function() {
 		$('.i-checks').iCheck({
 			checkboxClass: 'icheckbox_square-green',
 			radioClass: 'iradio_square-green',

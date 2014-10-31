@@ -27,3 +27,79 @@ BEGIN
 		END
 END
 GO
+
+IF OBJECT_ID (N'shm_inc.USP_INC_I_REQUERIMIENTO', N'P') IS NOT NULL
+DROP PROCEDURE shm_inc.USP_INC_I_REQUERIMIENTO
+GO
+CREATE PROCEDURE shm_inc.USP_INC_I_REQUERIMIENTO @nReTipo INT
+	,@dReFecha DATE
+	,@motivo VARCHAR(max)
+	,@nPerIdSolicitante INT
+	,@nTreId INT
+	,@error INT OUT
+AS
+BEGIN TRANSACTION
+
+BEGIN TRY
+	INSERT INTO [shm_inc].[REQUERIMIENTO] (
+		[nReTipo]
+		,[cReMotivo]
+		,[dReFechaRequerimiento]
+		,[nPerIdSolicitante]
+		,[cReEstado]
+		,[nTreId]
+		)
+	VALUES (
+		@nReTipo
+		,@motivo
+		,@dReFecha
+		,@nPerIdSolicitante
+		,1
+		,@nTreId
+		)
+
+	SET @error = 1
+
+	COMMIT TRANSACTION
+END TRY
+
+BEGIN CATCH
+	ROLLBACK TRANSACTION
+
+	SET @error = 0
+END CATCH
+GO
+
+-----------------------------------------------------------------------------------------------------------
+
+
+IF OBJECT_ID (N'shm_inc.USP_INC_S_REQUERIMIENTO ', N'P') IS NOT NULL
+DROP PROCEDURE shm_inc.USP_INC_S_REQUERIMIENTO 
+GO
+CREATE PROCEDURE shm_inc.USP_INC_S_REQUERIMIENTO 
+	-- Add the parameters for the stored procedure here
+	@accion varchar(50), 
+	@codigo int = 0
+AS
+BEGIN
+	SET NOCOUNT ON;
+	IF @accion = 'nuevos'
+		BEGIN
+			SELECT nReId
+				,dReFechaRegistro
+				,cReMotivo
+				,tr.cTreDescripcion
+				,CONVERT(varchar(10), r.dReFechaRequerimiento, 105)
+				,CONCAT (
+					p.cPerApellidoPaterno
+					,' '
+					,p.cPerApellidoMaterno
+					,' '
+					,p.cPerNombres
+					) AS nombre
+			FROM shm_inc.REQUERIMIENTO AS r
+			INNER JOIN shm_per.PERSONA AS p ON r.nPerIdSolicitante = p.nPerId
+			INNER JOIN shm_inc.TIPO_RECURSO AS tr ON tr.nTreId = r.nReTipo
+			WHERE r.cReEstado = 1
+		END
+END
