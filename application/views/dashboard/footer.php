@@ -8,6 +8,7 @@
 <script src="<?php echo URL_GLOBALJS ?>/plugins/metisMenu/jquery.metisMenu.js"></script>
 <!--tables -->
 <script src="<?php echo URL_GLOBALJS ?>/plugins/jeditable/jquery.jeditable.js"></script>
+
 <!-- Flot -->
 <script src="<?php echo URL_GLOBALJS ?>/plugins/flot/jquery.flot.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/plugins/flot/jquery.flot.tooltip.min.js"></script>
@@ -22,6 +23,9 @@
 <!-- Custom and plugin javascript -->
 <script src="<?php echo URL_GLOBALJS ?>/inspinia.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/plugins/pace/pace.min.js"></script>
+
+<script src="<?php echo URL_GLOBALJS ?>/plugins/chosen/chosen.jquery.js"></script>
+<script src="<?php echo URL_GLOBALJS ?>/plugins/datapicker/bootstrap-datepicker.js"></script>
 <!-- iCheck -->
 <script src="<?php echo URL_GLOBALJS ?>/plugins/iCheck/icheck.min.js"></script>
 <script src="<?php echo URL_GLOBALJS ?>/plugins/summernote/summernote.min.js"></script>
@@ -64,8 +68,6 @@
                 text: 'Go to <a href="mailbox.html" class="text-warning">Mailbox</a> to see who wrote to you.<br/> Check the date and today\'s tasks.'
             });
         }, 2000);
-
-
         $('.chart').easyPieChart({
             barColor: '#f8ac59',
 //                scaleColor: false,
@@ -73,7 +75,6 @@
             lineWidth: 4,
             size: 80
         });
-
         $('.chart2').easyPieChart({
             barColor: '#1c84c6',
 //                scaleColor: false,
@@ -81,7 +82,6 @@
             lineWidth: 4,
             size: 80
         });
-
         var data1 = [
             [0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 30], [11, 10], [12, 13], [13, 4], [14, 3], [15, 3], [16, 6]
         ];
@@ -125,25 +125,8 @@
                     tooltip: false
                 }
         );
-    });
-</script>
-<!--<script>
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '../../www.google-analytics.com/analytics.js', 'ga');
+    });</script>
 
-    ga('create', 'UA-4625583-2', 'webapplayers.com');
-    ga('send', 'pageview');
-
-</script>-->
 </body>
 
 <!-- Mirrored from webapplayers.com/inspinia_admin-v1.2/ by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 04 Aug 2014 00:46:41 GMT -->

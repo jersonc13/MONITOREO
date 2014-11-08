@@ -27,5 +27,15 @@ class Marca_model extends CI_Model {
         $result = $this->adampt->ejecuta();
         return $this->adampt->getParamOut1();
     }
+    
+    function dbregistrareditar($txtidmarca,$txtnombremarca,$cboestado) {
+        $this->adampt->setParam($txtidmarca);
+        $this->adampt->setParam($txtnombremarca);
+        $this->adampt->setParam($cboestado);
+        $this->adampt->setParamOut1();
+        $this->adampt->prepara('shm_inc.USP_INC_U_MARCA');
+        $result = $this->adampt->ejecuta();
+        return $this->adampt->getParamOut1();
+    }
 
 }

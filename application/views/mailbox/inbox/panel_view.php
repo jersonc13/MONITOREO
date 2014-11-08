@@ -14,9 +14,9 @@
                         <ul class="folder-list m-b-md" style="padding: 0">
                             <li><a href="<?php echo URL_MAIN?>/mailbox/inbox"> <i class="fa fa-inbox "></i> Bandeja <span class="label label-warning pull-right"><?php echo $bandeja_count[0]['bandeja_count'] ?></span> </a></li>
                             <li><a href="#" onclick="enviadosmensaje()"> <i class="fa fa-envelope-o"></i> Enviados</a></li>
-                            <li><a href="mailbox.html"> <i class="fa fa-certificate"></i> Importantes</a></li>
-                            <li><a href="mailbox.html"> <i class="fa fa-file-text-o"></i> Borradores <span class="label label-danger pull-right">2</span></a></li>
-                            <li><a href="mailbox.html"> <i class="fa fa-trash-o"></i> Eliminados</a></li>
+<!--                            <li><a href="mailbox.html"> <i class="fa fa-certificate"></i> Importantes</a></li>
+                            <li><a href="mailbox.html"> <i class="fa fa-file-text-o"></i> Borradores <span class="label label-danger pull-right">2</span></a></li>-->
+                            <li><a href="#" onclick="eliminadosmensaje()"> <i class="fa fa-trash-o"></i> Eliminados</a></li>
                         </ul>
                         <h5>Categories</h5>
                         <ul class="category-list" style="padding: 0">

@@ -1,7 +1,7 @@
 $(function() {
-    listarMarca();
+    listarRecurso();
 
-    $("#frmMarcaIns").validate({
+    $("#frmRecursoIns").validate({
         errorPlacement: function(error, element)
         {
             element.before(error);
@@ -9,12 +9,12 @@ $(function() {
         submitHandler: function(form) {
             $.ajax({
                 type: "POST",
-                url: "marca/registrar",
+                url: "recurso/registrar",
                 data: $(form).serialize(),
                 success: function(data) {
                     if (data == '1') {
                         alert("Datos ingresados correctamente");
-                        document.getElementById("frmMarcaIns").reset();
+                        document.getElementById("frmRecursoIns").reset();
                     } else {
                         alert("Error General!! al ingresar los datos");
                     }
@@ -26,20 +26,25 @@ $(function() {
         },
         rules: {
             //account
-            txtnombremarca: {
+            txttipoambiente: {
+                required: true
+            },
+            txtambiente: {
+                required: true
+            },
+            txtdescripcion: {
                 required: true
             }
         }
     });
 
-
 });
 
-function listarMarca() {
+function listarRecurso() {
     msgLoading("#mostrar_qry");
     $.ajax({
         type: "POST",
-        url: "marca/listarMarca",
+        url: "recurso/listarRecurso",
         cache: false,
         success: function(data) {
             $("#mostrar_qry").html(data);
@@ -50,28 +55,14 @@ function listarMarca() {
     });
 }
 
-function viewMarca() {
-    msgLoading("#mostrar_qry");
-    $.ajax({
-        type: "POST",
-        url: "marca/viewMarca",
-        cache: false,
-        success: function(data) {
-            $("#tab-2").html(data);
-        },
-        error: function() {
-            alert("Ha ocurrido un error, vuelva a intentarlo.");
-        }
-    });
-}
 
-
-function editarMarca(nidvalor) {
+function editarAmbiente(nidvalor) {
     if (confirm('¿Desea Editar el registro?')) {
         msgLoading("#mostrar_qry");
         $.ajax({
             type: "POST",
-            url: "marca/editarMarca",
+            url: "ambiente/editarAmbiente",
+            cache: false,
             data: {
                 nidvalor: nidvalor
             },
@@ -83,29 +74,4 @@ function editarMarca(nidvalor) {
             }
         });
     }
-}
-
-function editarGuardar() {
-//    msgLoading("#mostrar_qry");
-    $.ajax({
-        type: "POST",
-        url: "marca/guardarEditar",
-        cache: false,
-        data: {
-            txtidmarca: $('#txtidmarca').val(),
-            txtnombremarca: $('#txtnombremarca').val(),
-            cboestado: $('#cboestado').val()
-        },
-        success: function(data) {
-            if (data == '1') {
-                alert("Datos ingresados correctamente");
-                listarMarca();
-            } else {
-                alert("Error General!! al ingresar los datos");
-            }
-        },
-        error: function(data) {
-            alert("Error al ingresar los datos");
-        }
-    });
 }

@@ -28,12 +28,38 @@
         <link href="<?php echo URL_GLOBALCSS ?>/plugins/summernote/summernote-bs3.css" rel="stylesheet">
 
         <link href="<?php echo URL_GLOBALCSS ?>/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+        <link href="<?php echo URL_GLOBALCSS ?>/plugins/datapicker/datepicker3.css" rel="stylesheet">
+        <script language="JavaScript">
+            function mueveReloj() {
+                momentoActual = new Date()
+                hora = momentoActual.getHours()
+                minuto = momentoActual.getMinutes()
+                segundo = momentoActual.getSeconds()
+                str_segundo = new String(segundo)
+                if (str_segundo.length == 1)
+                    segundo = "0" + segundo
+
+                str_minuto = new String(minuto)
+                if (str_minuto.length == 1)
+                    minuto = "0" + minuto
+
+                str_hora = new String(hora)
+                if (str_hora.length == 1)
+                    hora = "0" + hora
+
+                horaImprimible = hora + " : " + minuto + " : " + segundo
+
+                document.form_reloj.reloj.value = horaImprimible
+
+                setTimeout("mueveReloj()", 1000)
+            }
+        </script> 
         <!-- <link href="<?php echo URL_GLOBALCSS ?>/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet"> -->
         <link href="<?php echo URL_GLOBALCSS ?>/plugins/datapicker/datepicker3.css" rel="stylesheet">
 
     </head>
 
-    <body>
+    <body onload="mueveReloj()">
         <div id="wrapper">
             <nav class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
@@ -45,13 +71,13 @@
                                 </span>
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                     <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $this->session->userdata('Nombres') ?></strong>
-                                        </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                                        </span> <span class="text-muted text-xs block">Administrador <b class="caret"></b></span> </span> </a>
                                 <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                    <li><a href="profile.html">Profile</a></li>
-                                    <li><a href="contacts.html">Contacts</a></li>
+                                    <li><a href="profile.html">Perfil</a></li>
+                                    <li><a href="contacts.html">Contacto</a></li>
                                     <li><a href="mailbox.html">Mailbox</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="login.html">Logout</a></li>
+                                    <li><a href="login.html">Desconectar</a></li>
                                 </ul>
                             </div>
                             <div class="logo-element">
@@ -82,7 +108,8 @@
                                         ?>
                                     </ul>
                                 </li>
-                            <?php }
+                                <?php
+                            }
                         }
                         ?>
                     </ul>
@@ -101,9 +128,12 @@
                                 </div>
                             </form>
                         </div>
+                        
                         <ul class="nav navbar-top-links navbar-right">
                             <li>
-                                <span class="m-r-sm text-muted welcome-message">Bienvenidos al Sistema de Monitoreo</span>
+                                <span class="m-r-sm text-muted welcome-message">Bienvenidos al Sistema de Monitoreo : <?php echo $this->session->userdata('Nombres') ?>
+                                </span>
+                                
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -201,7 +231,11 @@
                                 </ul>
                             </li>
 
-
+                            <li>
+                                <form name="form_reloj"> 
+                                    <input type="text" name="reloj" size="10" style="background-color : Black; color : White; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center;" onfocus="window.document.form_reloj.reloj.blur()"> 
+                                </form> 
+                            </li>
                             <li>
                                 <a href="../login">
                                     <i class="fa fa-sign-out"></i>Cerrar Sesión
