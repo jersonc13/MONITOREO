@@ -103,3 +103,70 @@ BEGIN
 			WHERE r.cReEstado = 1
 		END
 END
+GO
+---------------------------------------------
+IF OBJECT_ID (N'shm_inc.USP_INC_I_INCIDENCIA ', N'P') IS NOT NULL
+DROP PROCEDURE shm_inc.USP_INC_I_INCIDENCIA 
+GO
+CREATE PROCEDURE shm_inc.USP_INC_I_INCIDENCIA
+	@nPerId int
+	,@nIncMedioDeSolicitud tinyint
+	,@cIncAsunto VARCHAR(max)
+	,@error INT OUT
+AS 
+BEGIN TRANSACTION
+		 BEGIN TRY
+INSERT INTO [shm_inc].[INCIDENCIA]
+           (
+			[nPerId]
+           ,[nIncMedioDeSolicitud]
+           ,[cIncAsunto]
+           ,[fIncFechaRegistro]
+           ,[cIncEliminado]
+		   ,[nEinId]
+		   )
+     VALUES
+           (@nPerId
+           ,@nIncMedioDeSolicitud
+           ,@cIncAsunto
+           ,getdate()
+           ,0
+           ,1)
+		 SET @error = (select top 1 nIncId from shm_inc.INCIDENCIA order by 1 desc)
+	   	COMMIT TRANSACTION
+END TRY
+
+BEGIN CATCH
+	ROLLBACK TRANSACTION
+
+	SET @error = 0
+END CATCH
+GO
+---------------------
+IF OBJECT_ID (N'shm_inc.USP_INC_I_RECURSO_INCIDENCIA ', N'P') IS NOT NULL
+DROP PROCEDURE shm_inc.USP_INC_I_RECURSO_INCIDENCIA 
+GO
+CREATE PROCEDURE shm_inc.USP_INC_I_RECURSO_INCIDENCIA
+	@nIncId int
+	,@nRecId varchar(max)
+	,@error INT OUT
+AS 
+BEGIN TRANSACTION
+		 BEGIN TRY
+		 CREATE TABLE #recIncidencia(nRecId INT)
+		 INSERT #recIncidencia SELECT * FROM fnSplit(@nRecId,',')
+
+		INSERT [shm_inc].[RECURSO_INCIDENCIA]([nIncId],[nRecId])
+		SELECT @nIncId,nRecId FROM #recIncidencia
+
+		SET @error = 1
+	   	COMMIT TRANSACTION
+		
+END TRY
+
+BEGIN CATCH
+	ROLLBACK TRANSACTION
+
+	SET @error = 0
+END CATCH
+GO

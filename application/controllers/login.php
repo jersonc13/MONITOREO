@@ -19,10 +19,7 @@ class Login extends CI_Controller {
         $txt_contrasena = trim($_POST['txt_contrasena']);
 
         $result = $this->login_model->da_enviardatos($txt_usuario, $txt_contrasena);
-        // print_p($result);
-        // exit();
         if ($result) {
-//            $valor = $this->login_model->da_ultimasesion($result['nidusuario']);
             $sesion_data = array(
                 'esta_logeado' => true,
                 'IDUsu' => $result[0]['nUsuId'],
@@ -30,7 +27,7 @@ class Login extends CI_Controller {
                 'IDPer' => $result[0]['nPerId'],
                 'Apellidos' => $result[0]['cPerApellidoPaterno'] . ' ' . $result[0]['cPerApellidoMaterno'],
                 'Nombres' => $result[0]['cPerNombres'],
-            );
+                );
 
             $this->session->set_userdata($sesion_data);
 
