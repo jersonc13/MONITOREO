@@ -25,7 +25,8 @@ class Recurso extends CI_Controller {
     function index() {
         $data['main_content'] = 'mantenedor/recurso/panel_view';
         $data['titulo'] = 'Recurso | Monitoreo';
-        $data['listarMarca'] = $this->marca_model->dblistarmarca('qry_all','1');
+        $data['listartipoRecurso'] = $this->recurso_model->dblistartiporecurso('qry_all', '1');
+        $data['listarMarca'] = $this->marca_model->dblistarmarca('qry_all', '1');
         $data['listarAmbiente'] = $this->ambiente_model->dblistarambiente('qry_all', '1');
         $this->load->view('dashboard/template', $data);
     }
@@ -61,10 +62,24 @@ class Recurso extends CI_Controller {
         $this->load->view('mantenedor/recurso/qry_view', $data);
     }
 
-    function editarAmbiente() {
+    function editarRecurso() {
         $nidvalor = $_POST['nidvalor'];
-        $data['editarAmbiente'] = $this->ambiente_model->dblistarambiente('qry_id', $nidvalor);
-        $this->load->view('mantenedor/ambiente/upd_view', $data);
+        $data['listartipoRecurso'] = $this->recurso_model->dblistartiporecurso('qry_all', '1');
+        $data['listarMarca'] = $this->marca_model->dblistarmarca('qry_all', '1');
+        $data['listarAmbiente'] = $this->ambiente_model->dblistarambiente('qry_all', '1');
+        $data['editarRecurso'] = $this->recurso_model->dblistarrecurso('qry_id', $nidvalor);
+        $this->load->view('mantenedor/recurso/upd_view', $data);
+    }
+
+    function guardarEditar() {
+
+        $validar = $this->recurso_model->dbregistrareditar($_POST['txtidrecurso'], $_POST['cbotiporecurso'], $_POST['txtcodigopat'], $_POST['txtserie'], $_POST['cbomarca'], $_POST['txtmodelo'], $_POST['cboambiente'], $_POST['txtfechacompra'], $_POST['txtfechagarantia'], $_POST['txtcaracteristicas'], $_POST['txtobservaciones'], $_POST['txtfechavida'], $_POST['txtruta'], $_POST['txthost'], $_POST['txtip'], $_POST['cboestado']);
+
+        if ($validar) {
+            echo "1";
+        } else {
+            echo "0";
+        }
     }
 
 }

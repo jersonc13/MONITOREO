@@ -1,12 +1,11 @@
 <script src="<?php echo URL_SCRIPTS ?>/requerimiento/jsPedido.js" type="text/javascript"></script>
-<?php echo URL_SCRIPTS; ?>
 <div class="page-content">
     <!-- BEGIN PAGE HEADER-->
     <div class="row">
         <div class="col-md-12">
             <!-- BEGIN PAGE TITLE & BREADCRUMB-->
             <h3 class="page-title">
-                Incidencias
+                Requerimientos
             </h3>
             <ul class="page-breadcrumb breadcrumb">
                 <li>
@@ -43,7 +42,7 @@
                     </li>
                     <li>
                         <a href="#tab_0" data-toggle="tab" id="listar_anc">
-                            Incidencias Generadas </a>
+                            Mis requerimientos Generadas </a>
                     </li>
                     <!-- <li >
                         <a href="#tab_2" data-toggle="tab">

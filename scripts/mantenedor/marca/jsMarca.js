@@ -15,6 +15,7 @@ $(function() {
                     if (data == '1') {
                         alert("Datos ingresados correctamente");
                         document.getElementById("frmMarcaIns").reset();
+                        listarMarca();
                     } else {
                         alert("Error General!! al ingresar los datos");
                     }

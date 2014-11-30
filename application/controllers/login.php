@@ -25,9 +25,10 @@ class Login extends CI_Controller {
                 'IDUsu' => $result[0]['nUsuId'],
                 'nick' => $result[0]['cUsuNick'],
                 'IDPer' => $result[0]['nPerId'],
+                'Tipo' => $result[0]['nUsuTipo'],
                 'Apellidos' => $result[0]['cPerApellidoPaterno'] . ' ' . $result[0]['cPerApellidoMaterno'],
                 'Nombres' => $result[0]['cPerNombres'],
-                );
+            );
 
             $this->session->set_userdata($sesion_data);
 
@@ -41,6 +42,11 @@ class Login extends CI_Controller {
 
     function redireccionar() {
         $this->load->view("login_view");
+    }
+
+    function logout() {
+        $this->session->sess_destroy();
+        redirect("login");
     }
 
 }

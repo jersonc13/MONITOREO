@@ -1,50 +1,6 @@
 $(function() {
     listarUsuarios();
 
-    $("#frmUsuarios").validate({
-        errorElement: 'span',
-        errorClass: 'help-block',
-        submitHandler: function(form) {
-            $.ajax({
-                type: "POST",
-                url: "usuarios/registrarUsuarios",
-                data: $(form).serialize(),
-                success: function(data) {
-                    if (data == '1') {
-                        alert("Datos ingresados correctamente");
-                    } else {
-                        alert("Error al ingresar los datos");
-                    }
-                },
-                error: function(data) {
-                    alert("Error al ingresar los datos");
-                }
-            });
-        },
-        rules: {
-            txtdniruc: {
-                required: true
-            },
-            txtusuario: {
-                required: true
-            },
-            txtcontrasena: {
-                required: true
-            },
-            cbo_tipousuarios: {
-                required: true
-            }
-        },
-        highlight: function(element) { // hightlight error inputs
-            $(element)
-                    .closest('.form-group').removeClass('has-success').addClass('has-error'); // set error class to the control group
-        },
-        unhighlight: function(element) { // revert the change done by hightlight
-            $(element)
-                    .closest('.form-group').removeClass('has-error'); // set error class to the control group
-        }
-    });
-
 });
 
 function listarUsuarios() {
@@ -62,25 +18,19 @@ function listarUsuarios() {
     });
 }
 
-function estadoUsuarios(nidusuarios) {
-    if (confirm('Esta seguro de editar este registro?')) {
+
+function editarUsuario(nidvalor) {
+    if (confirm('¿Desea Editar el registro?')) {
         msgLoading("#mostrar_qry");
         $.ajax({
             type: "POST",
-            url: "usuarios/estadoUsuarios",
+            url: "usuarios/editarUsuarios",
             cache: false,
             data: {
-                nidusuarios: nidusuarios
+                nidvalor: nidvalor
             },
             success: function(data) {
-                switch (data) {
-                    case "0":
-                        alert("Ha ocurrido un error, vuelva a intentarlo.");
-                        break;
-                    case "1":
-                        listarAreas();
-                        break;
-                }
+                $("#mostrar_qry").html(data);
             },
             error: function() {
                 alert("Ha ocurrido un error, vuelva a intentarlo.");
@@ -89,21 +39,27 @@ function estadoUsuarios(nidusuarios) {
     }
 }
 
-function buscarUsuarios() {
+function editarGuardar() {
+//    msgLoading("#mostrar_qry");
     $.ajax({
         type: "POST",
-        url: "usuarios/buscarUsuarios",
+        url: "usuarios/guardarEditar",
         cache: false,
         data: {
-            txtbuscarArea: $('#txtbuscarArea').val()
+            txtidusuarios: $('#txtidusuarios').val(),
+            txtcusunick: $('#txtcusunick').val(),
+            cboestado: $('#cboestado').val()
         },
         success: function(data) {
-            $("#detalle_lista").html(data);
-//            alert(data);
+            if (data == '1') {
+                alert("Datos ingresados correctamente");
+                listarUsuarios();
+            } else {
+                alert("Error General!! al ingresar los datos");
+            }
         },
-        error: function() {
-            alert("Ha ocurrido un error, vuelva a intentarlo.");
+        error: function(data) {
+            alert("Error al ingresar los datos");
         }
     });
 }
-

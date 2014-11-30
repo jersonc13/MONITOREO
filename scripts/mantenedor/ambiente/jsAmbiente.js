@@ -15,6 +15,7 @@ $(function() {
                     if (data == '1') {
                         alert("Datos ingresados correctamente");
                         document.getElementById("frmAmbienteIns").reset();
+                        listarAmbiente();
                     } else {
                         alert("Error General!! al ingresar los datos");
                     }
@@ -74,4 +75,31 @@ function editarAmbiente(nidvalor) {
             }
         });
     }
+}
+
+function editarGuardar() {
+//    msgLoading("#mostrar_qry");
+    $.ajax({
+        type: "POST",
+        url: "ambiente/guardarEditar",
+        cache: false,
+        data: {
+            txtidambiente: $('#txtidambiente').val(),
+            cbotipoambiente: $('#cbotipoambiente').val(),
+            txtnombreambiente: $('#txtnombreambiente').val(),
+            txtnombredescripcion : $('#txtnombredescripcion').val(),
+            cboestado: $('#cboestado').val()
+        },
+        success: function(data) {
+            if (data == '1') {
+                alert("Datos ingresados correctamente");
+                listarAmbiente();
+            } else {
+                alert("Error General!! al ingresar los datos");
+            }
+        },
+        error: function(data) {
+            alert("Error al ingresar los datos");
+        }
+    });
 }

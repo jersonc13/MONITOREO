@@ -1,0 +1,7 @@
+notificación de cantidad de casos en barra de estado
+Coregir el problema con el tick de la hora
+Boton cancelar en la bandeja tecnico que regrese al listado
+Puntuar Atenciones de los tecnicos por parte del docente
+mensaje al aceptar los casos 
+ver el diagnostico ingresado por el tecnico
+

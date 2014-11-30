@@ -48,5 +48,16 @@ class Ambiente extends CI_Controller {
         $data['editarAmbiente'] = $this->ambiente_model->dblistarambiente('qry_id', $nidvalor);
         $this->load->view('mantenedor/ambiente/upd_view', $data);
     }
+    
+    function guardarEditar() {
+
+        $validar = $this->ambiente_model->dbregistrareditar($_POST['txtidambiente'], $_POST['cbotipoambiente'], $_POST['txtnombreambiente'],$_POST['txtnombredescripcion'], $_POST['cboestado']);
+
+        if ($validar) {
+            echo "1";
+        } else {
+            echo "0";
+        }
+    }
 
 }

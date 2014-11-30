@@ -27,6 +27,14 @@ class Inbox extends CI_Controller {
         $data['resultado'] = $this->inbox_model->da_bandejamail();
         $this->load->view('dashboard/template', $data);
     }
+    
+    function detalleheader() {
+        $data['main_content'] = 'mailbox/inbox/panel_view';
+        $data['titulo'] = 'INBOX | SIM';
+        $data['bandeja_count'] = $this->inbox_model->da_bandejacount();
+        $data['resultado'] = $this->inbox_model->da_bandejamail();
+        $this->load->view('dashboard/template', $data);
+    }
 
     function nuevoinbox() {
         $this->load->view('mailbox/inbox/nuevoinbox_view');

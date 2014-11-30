@@ -9,7 +9,19 @@ class Cargas {
         $CI->load->model('dashboard/menu_model', 'cargaropcionpadre');
         return $CI->cargaropcionpadre->da_cargaropcionpadre();
     }
-
+    
+    public function cargaemail() {
+        $CI = & get_instance();
+        $CI->load->model('mailbox/inbox_model', 'cargaremail');
+        return $CI->cargaremail->da_bandejacount();
+    }
+    
+    public function bandejamail() {
+        $CI = & get_instance();
+        $CI->load->model('mailbox/inbox_model', 'cargaremail');
+        return $CI->cargaremail->da_bandejamail();
+    }
+    
     public function cargaropcionhijo() {
         $CI = & get_instance();
         $CI->load->model('dashboard/menu_model', 'cargaropcionhijo');
@@ -25,5 +37,7 @@ class Cargas {
             redirect(URL_MAIN);
         }
     }
+    
+    
 
 }

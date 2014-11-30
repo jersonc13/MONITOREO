@@ -10,10 +10,20 @@ class Incidencia_model extends CI_Model {
 		$this->adampt->setParam( $this->_cAccion );
 		$query = $this->adampt->consulta('shm_inc.USP_INC_S_INCIDENCIAS');
 		if (count($query) > 0) {
-		    return $query;
+			return $query;
 		} else {
-		    return null;
+			return null;
 		}		
+	}
+	public function buscarTrabajador( $accion, $criterio){
+		$this->adampt->setParam( $accion );
+		$this->adampt->setParam( $criterio );
+		$query = $this->adampt->consulta('shm_inc.USP_REQ_S_TRABAJADOR');
+		if (count($query) > 0) {
+			return $query;
+		} else {
+			return null;
+		}	
 	}
 }
 

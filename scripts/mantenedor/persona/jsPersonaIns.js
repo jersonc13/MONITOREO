@@ -22,6 +22,7 @@ $(function() {
                 success: function(data) {
                     if (data == '1') {
                         alert("Datos ingresados correctamente");
+                        document.getElementById("frmPersonaIns").reset();
                     } else if(data=='3'){
                         alert("Ocurrio un Error al crear el Usuario");
                     }else{

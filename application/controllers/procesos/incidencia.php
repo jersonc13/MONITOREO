@@ -4,6 +4,7 @@ class Incidencia extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->cargas->_validaracceso();
 		$this->load->model('procesos/incidencia_model','objIncidencia');
 	}
 
@@ -12,7 +13,7 @@ class Incidencia extends CI_Controller {
 		$data['FirtLoad'] = "FL";
 		$data['main_content'] = 'procesos/incidencia/panel_view';
 		$data['titulo'] = 'Panel de Administración Incidencias(P.A)';
-		$this->objIncidencia->set_accion('nuevos');
+		$this->objIncidencia->set_accion('copia');
 		$data['incidencias'] = $this->objIncidencia->listar();
 		$this->load->view('dashboard/template', $data);
 	}
@@ -22,10 +23,11 @@ class Incidencia extends CI_Controller {
 		if (!isset($V2))
 			$accion = $this->input->post('accion');
 
-		if($accion == "TODASINCIDENCIAS") {
-			$this->objIncidencia->set_accion('nuevos');
-		}
+		$this->objIncidencia->set_accion('copia');
+		// if($accion == "TODASINCIDENCIAS") {
+		// }
 		$data['incidencias'] = $this->objIncidencia->listar();
+		// print_p($data);exit();
 		$this->load->view('procesos/incidencia/qry_view',$data);
 	}
 

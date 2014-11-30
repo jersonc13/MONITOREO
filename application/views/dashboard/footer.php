@@ -64,7 +64,7 @@
         WinMove();
         setTimeout(function() {
             $.gritter.add({
-                title: 'Tienes 2 Mensajes Nuevos',
+                title: 'Tienes Mensajes Nuevos',
                 text: 'Go to <a href="mailbox.html" class="text-warning">Mailbox</a> to see who wrote to you.<br/> Check the date and today\'s tasks.'
             });
         }, 2000);

@@ -9,7 +9,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>INSPINIA | Dashboard</title>
+        <title>UCV | Panel Control</title>
         <script src="<?php echo URL_GLOBALJS ?>/jquery-1.10.2.js"></script>
         <link href="<?php echo URL_GLOBALCSS ?>/bootstrap.min.css" rel="stylesheet">
         <link href="<?php echo URL_GLOBALCSS ?>/font-awesome.css" rel="stylesheet">
@@ -53,6 +53,25 @@
 
                 setTimeout("mueveReloj()", 1000)
             }
+
+
+            function bandejadetallemensajex(nidvalor) {
+                $.ajax({
+                    type: "POST",
+                    url: "../mailbox/inbox/detalleheader",
+                    cache: false,
+                    data: {
+                        nidvalor: nidvalor
+                    },
+                    success: function(data) {
+                        $("#divinboxx").html(data);
+                    },
+                    error: function() {
+                        alert("Ha ocurrido un error, vuelva a intentarlo.");
+                    }
+                });
+            }
+
         </script> 
         <!-- <link href="<?php echo URL_GLOBALCSS ?>/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet"> -->
         <link href="<?php echo URL_GLOBALCSS ?>/plugins/datapicker/datepicker3.css" rel="stylesheet">
@@ -71,14 +90,24 @@
                                 </span>
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                     <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $this->session->userdata('Nombres') ?></strong>
-                                        </span> <span class="text-muted text-xs block">Administrador <b class="caret"></b></span> </span> </a>
-                                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                        </span> <span class="text-muted text-xs block">
+                                            <?php 
+                                            if($this->session->userdata('Tipo') == '1'){
+                                                echo "Administrador";
+                                            }else{
+                                                echo "Docente";
+                                            }
+                                            ?> 
+                                            <!--<b class="caret"></b>-->
+                                        </span>
+                                    </span> </a>
+<!--                                <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                     <li><a href="profile.html">Perfil</a></li>
                                     <li><a href="contacts.html">Contacto</a></li>
                                     <li><a href="mailbox.html">Mailbox</a></li>
                                     <li class="divider"></li>
                                     <li><a href="login.html">Desconectar</a></li>
-                                </ul>
+                                </ul>-->
                             </div>
                             <div class="logo-element">
                                 UCV
@@ -88,6 +117,8 @@
                         <?php
                         $cargaropcionpadre = $this->cargas->cargaropcionpadre();
                         $cargaropcionhijo = $this->cargas->cargaropcionhijo();
+                        $cargaemail = $this->cargas->cargaemail();
+                        $bandejamail = $this->cargas->bandejamail();
                         if ($cargaropcionpadre) {
                             foreach ($cargaropcionpadre as $oppadre) {
                                 ?>
@@ -128,60 +159,40 @@
                                 </div>
                             </form>
                         </div>
-                        
                         <ul class="nav navbar-top-links navbar-right">
                             <li>
                                 <span class="m-r-sm text-muted welcome-message">Bienvenidos al Sistema de Monitoreo : <?php echo $this->session->userdata('Nombres') ?>
                                 </span>
-                                
+
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                                    <i class="fa fa-envelope"></i>  <span class="label label-warning"><?php echo $cargaemail[0]['bandeja_count'] ?></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-messages">
-                                    <li>
-                                        <div class="dropdown-messages-box">
-                                            <a href="profile.html" class="pull-left">
-                                                <img alt="image" class="img-circle" src="<?php echo URL_GLOBALIMG ?>/a7.jpg">
-                                            </a>
-                                            <div class="media-body">
-                                                <small class="pull-right">46h ago</small>
-                                                <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
-                                                <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <div class="dropdown-messages-box">
-                                            <a href="profile.html" class="pull-left">
-                                                <img alt="image" class="img-circle" src="<?php echo URL_GLOBALIMG ?>/a4.jpg">
-                                            </a>
-                                            <div class="media-body ">
-                                                <small class="pull-right text-navy">5h ago</small>
-                                                <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
-                                                <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <div class="dropdown-messages-box">
-                                            <a href="profile.html" class="pull-left">
-                                                <img alt="image" class="img-circle" src="<?php echo URL_GLOBALIMG ?>/profile.jpg">
-                                            </a>
-                                            <div class="media-body ">
-                                                <small class="pull-right">23h ago</small>
-                                                <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
-                                                <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="divider"></li>
+
+                                    <?php if ($bandejamail) { ?>
+                                        <?php foreach ($bandejamail as $lista) { ?>
+                                            <?php if ($lista['cReqEstado'] == 'P') { ?>
+                                                <li>
+                                                    <div class="dropdown-messages-box">
+                                                        <a href="#" class ="pull-left">
+                                                            <img alt="image" class="img-circle" src="<?php echo URL_GLOBALIMG ?>/a7.jpg">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <strong><?php echo $lista['nombre'] ?></strong> Te envió un <strong>mensaje</strong>. <br>
+                                                            <small class="text-muted"><?php echo $lista['cReqAsunto'] ?></small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            <?php } ?>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                     <li>
                                         <div class="text-center link-block">
-                                            <a href="mailbox.html">
+                                            <a href="../mailbox/inbox">
                                                 <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
                                             </a>
                                         </div>
@@ -237,7 +248,7 @@
                                 </form> 
                             </li>
                             <li>
-                                <a href="../login">
+                                <a href="<?php echo base_url() ?>login/logout">
                                     <i class="fa fa-sign-out"></i>Cerrar Sesión
                                 </a>
                             </li>

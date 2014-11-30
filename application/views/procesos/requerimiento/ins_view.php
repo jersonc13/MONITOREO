@@ -31,15 +31,15 @@
 					<span class="input-group-addon">
 						<i class="fa fa-calendar"></i>
 					</span>
-					<input type="text" id="txtfecha" name="txtfecha" class="form-control" value="03/04/2014">
+					<input type="text" id="txtfecha" name="txtfecha" class="form-control" value="<?php echo  date('d/m/Y'); ?>">
 				</div>
+			</div>
+			<div class="mail-text h-200">
+				<div class="summernote"></div>
+				<div class="clearfix"></div>
 			</div>
 		</form>
 
-	</div>
-	<div class="mail-text h-200">
-		<div class="summernote"></div>
-		<div class="clearfix"></div>
 	</div>
 	<div class="mail-body text-right tooltip-demo">
 		<a onclick="enviarrequerimiento()" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> Confirmar</a>

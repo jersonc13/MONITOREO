@@ -66,8 +66,9 @@ function enviarrequerimiento() {
             txtcontenido : document.getElementById('txtcontenido').innerHTML
         },
         success: function(data) {
+            document.getElementById("frmRequisitos").reset();
+            document.getElementById('txtcontenido').innerHTML = '';
             alert("Envio de mensaje Exitoso");
-            cleanForm('#frmRequisitos');
         },
         error: function() {
             alert("Ha ocurrido un error, vuelva a intentarlo.");

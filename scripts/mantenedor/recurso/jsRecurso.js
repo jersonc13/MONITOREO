@@ -26,13 +26,28 @@ $(function() {
         },
         rules: {
             //account
-            txttipoambiente: {
+            txtcodigopatrimonial: {
                 required: true
             },
-            txtambiente: {
+            txtserie: {
                 required: true
             },
-            txtdescripcion: {
+            txtmodelo: {
+                required: true
+            },
+            txtfechacompra: {
+                required: true
+            },
+            txtfechagarantia: {
+                required: true
+            },
+            txtcaracteristicas: {
+                required: true
+            },
+            txtobservaciones: {
+                required: true
+            },
+            txtfechavida: {
                 required: true
             }
         }
@@ -56,12 +71,12 @@ function listarRecurso() {
 }
 
 
-function editarAmbiente(nidvalor) {
+function editarRecurso(nidvalor) {
     if (confirm('¿Desea Editar el registro?')) {
         msgLoading("#mostrar_qry");
         $.ajax({
             type: "POST",
-            url: "ambiente/editarAmbiente",
+            url: "recurso/editarRecurso",
             cache: false,
             data: {
                 nidvalor: nidvalor
@@ -74,4 +89,42 @@ function editarAmbiente(nidvalor) {
             }
         });
     }
+}
+
+function editarGuardar() {
+//    msgLoading("#mostrar_qry");
+    $.ajax({
+        type: "POST",
+        url: "recurso/guardarEditar",
+        cache: false,
+        data: {
+            txtidrecurso: $('#txtidrecurso').val(),
+            cbotiporecurso: $('#cbotiporecurso').val(),
+            txtcodigopat: $('#txtcodigopat').val(),
+            txtserie : $('#txtserie').val(),
+            cbomarca: $('#cbomarca').val(),
+            txtmodelo: $('#txtmodelo').val(),
+            cboambiente: $('#cboambiente').val(),
+            txtfechacompra: $('#txtfechacompra').val(),
+            txtfechagarantia: $('#txtfechagarantia').val(),
+            txtcaracteristicas: $('#txtcaracteristicas').val(),
+            txtobservaciones: $('#txtobservaciones').val(),
+            txtfechavida: $('#txtfechavida').val(),
+            txtruta: $('#txtruta').val(),
+            txthost: $('#txthost').val(),
+            txtip: $('#txtip').val(),
+            cboestado: $('#cboestado').val()
+        },
+        success: function(data) {
+            if (data == '1') {
+                alert("Datos ingresados correctamente");
+                listarRecurso();
+            } else {
+                alert("Error General!! al ingresar los datos");
+            }
+        },
+        error: function(data) {
+            alert("Error al ingresar los datos");
+        }
+    });
 }

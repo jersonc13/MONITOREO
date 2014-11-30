@@ -93,7 +93,7 @@
 <div id="cnt_qry_bangen_repmus" style=" text-align:  center"></div>
 <div id="cnt_fila_musica" style=" text-align:  center"></div>
 
-<script src="<?php echo URL_SCRIPTS ?>/table-advanced.js"></script>
+
 <!-- Librerias de PopUp -->
 <!-- Add fancyBox main JS and CSS files -->
 <!-- <script type="text/javascript" src="<?php echo URL_SCRIPTS ?>/source-fancy/jquery.fancybox.js?v=2.1.5"></script> -->

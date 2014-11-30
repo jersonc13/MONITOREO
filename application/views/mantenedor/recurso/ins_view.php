@@ -3,8 +3,9 @@
         <label class="col-sm-2 control-label">Tipo de Recurso</label>
         <div class="col-sm-10">
             <select id="cbotiporecurso" name="cbotiporecurso" class="form-control">
-                <option value="1">Interno</option>
-                <option value="2">Externo</option>
+                <?php foreach ($listartipoRecurso as $value) { ?>
+                    <option value="<?php echo $value['nTreId'] ?>"><?php echo $value['cTreDescripcion'] ?></option>
+                <?php } ?>
             </select>
         </div>
     </div>
@@ -121,7 +122,7 @@
             forceParse: false,
             calendarWeeks: true,
             autoclose: true,
-            format: 'dd/mm/yy'
+            format: 'yyyy-mm-dd'
         });
     });
 

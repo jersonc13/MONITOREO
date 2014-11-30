@@ -4,7 +4,7 @@ $(function() {
 
 });
 window.onload = function() {
-    setInterval(actualizargrilla, 10000);
+    setInterval(actualizargrilla, 90000);
 }
 
 function actualizargrilla() {

@@ -1,37 +1,74 @@
-<div class="portlet box blue">
-    <div class="portlet-title">
-        <div class="caption">
-            <i class="fa fa-globe"></i>Listado de Personas Natural
+<div id="wrapper">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <table class="table table-striped table-bordered table-hover " id="editable" >
+                            <thead>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Email</th>
+                                    <th>Estado</th>
+                                    <th>Opción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if ($listarPersona) { ?>
+                                    <?php foreach ($listarPersona as $key => $listar) { ?>
+                                        <tr>
+                                            <td><?php echo $listar['cPerApellidoPaterno'].' '.$listar['cPerApellidoMaterno'].' '.$listar['cPerNombres'] ?></td>
+                                            <td><?php echo $listar['cPerEmail'] ?></td>
+                                            <td><?php echo $listar['estado'] ?></td>
+                                            <td>
+                                                <a href="#" class="btn btn-sm blue" onclick="editarAmbiente(<?php echo $listar['nPerId'] ?>)"><i class="fa fa-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                        <a onclick="listarPersona()" style="cursor: pointer"><i class="fa fa-refresh"></i>ACTUALIZAR</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="tools">
-            <a href="#" onclick="listarPersonas()" class="reload">
-            </a>
-        </div>
-    </div>
-    <div class="portlet-body">
-        <table class="table table-striped table-bordered table-hover" id="sample_1">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>DNI/RUC</th>           
-                    <th>Opciones</th>          
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($listarPersonaNatural as $key => $listar) { ?>
-                    <tr>
-                        <td><?php echo $listar['capellidos'] . ' ' . $listar['cnombres'] ?></td>
-                        <td><?php echo $listar['cdniruc'] ?></td>
-                        <td><a href="#" class="btn btn-sm blue">Editar <i class="fa fa-edit"></i></a>
-                            <a href="#" onclick="estadoPersona(<?php echo $listar['nidpersona'] ?>)" class="btn btn-sm red"><?php if ($listar['nestado'] == '1') { ?>Dar de baja <?php } else { ?> Dar de alta <?php } ?> <i class="fa fa-refresh"></i></a></td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
     </div>
 </div>
+
 <script>
-    jQuery(document).ready(function() {
-        TableAdvanced.init();
+    $(document).ready(function() {
+        $('.dataTables-example').dataTable();
+
+        /* Init DataTables */
+        var oTable = $('#editable').dataTable();
+
+        /* Apply the jEditable handlers to the table */
+//        oTable.$('td').editable('http://webapplayers.com/example_ajax.php', {
+//            "callback": function(sValue, y) {
+//                var aPos = oTable.fnGetPosition(this);
+//                oTable.fnUpdate(sValue, aPos[0], aPos[1]);
+//            },
+//            "submitdata": function(value, settings) {
+//                return {
+//                    "row_id": this.parentNode.getAttribute('id'),
+//                    "column": oTable.fnGetPosition(this)[2]
+//                };
+//            },
+//            "width": "90%"
+//        });
+
+
     });
+
+    function fnClickAddRow() {
+        $('#editable').dataTable().fnAddData([
+            "Custom row",
+            "New row",
+            "New row",
+            "New row",
+            "New row"]);
+
+    }
 </script>

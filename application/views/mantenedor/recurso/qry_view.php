@@ -8,6 +8,7 @@
                         <table class="table table-striped table-bordered table-hover " id="editable" >
                             <thead>
                                 <tr>
+                                    <th>Tipo Recurso</th>
                                     <th>Codigo Patrimonial</th>
                                     <th>Serie</th>
                                     <th>Modelo</th>
@@ -19,12 +20,13 @@
                                 <?php if ($listarRecurso) { ?>
                                     <?php foreach ($listarRecurso as $key => $listar) { ?>
                                         <tr>
+                                            <td><?php echo $listar['cTreDescripcion'] ?></td>
                                             <td><?php echo $listar['cRecCodigoPatrimonial'] ?></td>
                                             <td><?php echo $listar['cRecSerie'] ?></td>
                                             <td><?php echo $listar['cRecModelo'] ?></td>
                                             <td><?php echo $listar['estado'] ?></td>
                                             <td>
-                                                <a href="#" class="btn btn-sm blue" onclick="editarAmbiente(<?php echo $listar['nRecId'] ?>)"><i class="fa fa-edit"></i></a>
+                                                <a href="#" class="btn btn-sm blue" onclick="editarRecurso(<?php echo $listar['nRecId'] ?>)"><i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     <?php } ?>

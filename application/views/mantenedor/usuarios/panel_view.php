@@ -1,58 +1,21 @@
-<script src="<?php echo URL_ADMINPJS ?>/mantenedor/usuarios/jsUsuarios.js" type="text/javascript"></script>
-<div class="page-content">
-    <!-- BEGIN PAGE HEADER-->
-    <!-- END PAGE HEADER-->
-    <!-- BEGIN DASHBOARD STATS -->
-    <div class="row">
-
-        <div class="col-md-12">
-            <div class="tabbable tabbable-custom boxless tabbable-reversed">
+<script src="<?php echo URL_SCRIPTS ?>/mantenedor/usuarios/jsUsuarios.js" type="text/javascript"></script>
+<div class="col-lg-10">
+    <div class="panel blank-panel">
+        <div class="panel-heading">
+            <div class="panel-options">
                 <ul class="nav nav-tabs">
-
-                    <li class="active">
-                        <a href="#tab_0" data-toggle="tab">
-                            Buscar </a>
-                    </li>
-                    <li >
-                        <a href="#tab_1" data-toggle="tab">
-                            Nuevo </a>
-                    </li>
-                    <li >
-                        <a href="#tab_2" data-toggle="tab">
-                            Editar </a>
-                    </li>
+                    <li class="active"><a data-toggle="tab" href="#tab-1">Buscar</a></li>
                 </ul>
-                <div class="tab-content">
-
-                    <div class="tab-pane active" id="tab_0">
-
-                        <div id="mostrar_qry" >
-
-
-                        </div>
-
-                    </div>
-
-                    <div class="tab-pane" id="tab_1">
-
-                        <?php $this->load->view('mantenedor/usuarios/ins_view') ?>
-
-                    </div>
-
-                    <div class="tab-pane" id="tab_2">
-
-                        <?php $this->load->view('mantenedor/usuarios/detalle_view') ?>
-
-                    </div>
-
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane active">
+                    <div id="mostrar_qry" name="mostrar_qry"></div>
                 </div>
             </div>
         </div>
-
     </div>
-    <!-- END DASHBOARD STATS -->
-    <div class="clearfix">
-    </div>
-
 </div>
-<script src="<?php echo URL_ADMINPJS ?>/table-advanced.js"></script>
+<!-- END DASHBOARD STATS -->
+<div class="clearfix">

@@ -13,11 +13,17 @@ class Persona extends CI_Controller {
     }
 
     function index() {
-        // $data['listarPersonaNatural'] = $this->persona_model->da_listarPersona('qry_personaN');
+         $data['listarPersona'] = $this->objPersona->dblistarpersona('qry_all','1');
         // $data['listarDepartamento'] = $this->persona_model->dblistardepartamento();
         $data['main_content'] = 'mantenedor/persona/panel_view';
         $data['titulo'] = 'Registro de Persona';
         $this->load->view('dashboard/template', $data);
+    }
+    
+    function listarPersona() {
+
+        $data['listarPersona'] = $this->objPersona->dblistarpersona('qry_all', '1');
+        $this->load->view('mantenedor/persona/qry_view', $data);
     }
 
     function registrar() {
@@ -38,5 +44,23 @@ class Persona extends CI_Controller {
             $respuesta = 0;
         }
         echo $respuesta;
+    }
+    
+    function editarPersona() {
+        $nidvalor = $_POST['nidvalor'];
+        $data['editarPersona'] = $this->objPersona->dblistarpersona('qry_det',$nidvalor);
+        
+        $this->load->view('mantenedor/persona/upd_view', $data);
+    }
+    
+    function guardarEditar() {
+
+        $validar = $this->objPersona->dbregistrareditar($_POST['txtidper'], $_POST['txtapellidopater'], $_POST['txtapellidomater'],$_POST['txtnombre'],$_POST['txtemail'], $_POST['cboestado']);
+
+        if ($validar) {
+            echo "1";
+        } else {
+            echo "0";
+        }
     }
 }

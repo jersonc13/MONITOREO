@@ -51,6 +51,30 @@ class Persona_model extends CI_Model {
         return $this->adampt->getParamOut1();
     }
 
+    function dblistarpersona($accion, $criterio) {
+        $this->adampt->setParam($accion);
+        $this->adampt->setParam($criterio);
+        $query = $this->adampt->consulta('shm_per.USP_PER_S_PERSONA');
+        if (count($query) > 0) {
+            return $query;
+        } else {
+            return null;
+        }
+    }
+
+    function dbregistrareditar($txtidper, $txtapellidopater, $txtapellidomater, $txtnombre, $txtemail, $cboestado) {
+        $this->adampt->setParam($txtidper);
+        $this->adampt->setParam($txtapellidopater);
+        $this->adampt->setParam($txtapellidomater);
+        $this->adampt->setParam($txtnombre);
+        $this->adampt->setParam($txtemail);
+        $this->adampt->setParam($cboestado);
+        $this->adampt->setParamOut1();
+        $this->adampt->prepara('shm_per.USP_PER_U_PERSONA');
+        $result = $this->adampt->ejecuta();
+        return $this->adampt->getParamOut1();
+    }
+
 }
 
 /* End of file persona_model.php */
