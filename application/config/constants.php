@@ -19,7 +19,7 @@ define('DIR_READ_MODE', 0755);
 define('DIR_WRITE_MODE', 0777);
 
 
-define('SERVER_AP', '172.20.252.247');
+define('SERVER_AP', 'localhost');
 define('SERVER_PY', 'MONITOREO');
 define('SERVER_DB', 'JERSON-PC');
 define('USSER_DB', 'sa');
