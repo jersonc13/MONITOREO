@@ -12,7 +12,7 @@ $(function() {
                 url: "ambiente/registrar",
                 data: $(form).serialize(),
                 success: function(data) {
-                    if (data == '1') {
+                    if (data == 'Registro Exitoso') {
                         alert("Datos ingresados correctamente");
                         document.getElementById("frmAmbienteIns").reset();
                         listarAmbiente();

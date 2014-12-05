@@ -28,7 +28,7 @@
                                 <?php } ?>
                             </tbody>
                         </table>
-                        <a onclick="listarClient('C0A87E28-FFFF-0000-0000-000000000000')" style="cursor: pointer"><i class="fa fa-refresh"></i>ACTUALIZAR</a>
+                        <a onclick="listarClient('C0A87E28-FFFF-0000-0000-000000000000',<?php echo "'".$nombre."'" ?>)" style="cursor: pointer"><i class="fa fa-refresh"></i>ACTUALIZAR</a>
                     </div>
                 </div>
             </div>

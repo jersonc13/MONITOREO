@@ -16,7 +16,7 @@
 		<?php if ( $incidencias ) { ?>
 		<?php foreach ($incidencias as $key => $listar) { ?>
 		<tr>
-			<td><?php echo $listar['nAReqId'] ?></td>
+			<td><?php echo $listar['nReId'] ?></td>
 			<td><?php echo $listar['cTreDescripcion'] ?></td>
 			<td><?php echo $listar['cReMotivo'] ?></td>
 			<td><?php echo $listar['fechas'] ?></td>
@@ -25,7 +25,7 @@
 				<?php 
 				if ($accionx == 'BANDEJAMISCASOS') {
 					?>
-					<a href="#" class="btn btn-sm blue"  onclick="getsolucionar(<?php echo $listar['nAReqId'] ?>)" >
+					<a href="#" class="btn btn-sm blue"  onclick="getsolucionar(<?php echo $listar['nReId'] ?>)" >
 						<i class="fa fa-envelope"></i>
 					</a>
 					<?php 
@@ -34,7 +34,7 @@
 				<!-- <a href="#" class="btn btn-sm blue"  onclick="detalleRequerimiento(<?php echo $listar['nAReqId'] ?>)" >
 					<i class="fa fa-bookmark-o"></i>
 				</a> -->
-				<a data-placement="top" onclick="tomarCaso(<?php echo $listar['nAReqId'] ?>)" data-toggle="tooltip" type="button" data-original-title="Tomar Requerimiento" href="#" class="btn btn-sm blue" >
+				<a data-placement="top" onclick="tomarCaso(<?php echo $listar['nReId'] ?>)" data-toggle="tooltip" type="button" data-original-title="Tomar Requerimiento" href="#" class="btn btn-sm blue" >
 					<i class="fa fa-plus-square"></i>
 				</a>
 				<?php } ?>

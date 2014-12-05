@@ -44,7 +44,8 @@ class Bandejatecnico extends CI_Controller {
 	}
 	function cambiarEstado(){
 		$json = $this->input->post('json');
-		echo $this->objRequerimiento->TomarCaso($json['id'],2);
+		$data['estado'] = $this->objRequerimiento->TomarCaso($json['id'],2);
+		$this->load->view('procesos/requerimiento/info_cambio_estado',$data);
 	}
 	function getsolucionar(){
 		$json = $this->input->post('json');

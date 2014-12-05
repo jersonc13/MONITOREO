@@ -3,9 +3,9 @@ $(document).ajaxComplete(function( event, xhr, settings ){
 	cantidad_filas_sonido();
 });
 
-window.onload = function() {
+// window.onload = function() {
     setInterval(actualizargrilla, 6000);
-}
+// }
 
 function actualizargrilla() {
     get_page('vistaGet/BANDEJA', 'mostrar_qry');

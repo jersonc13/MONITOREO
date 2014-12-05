@@ -91,23 +91,23 @@
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                     <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $this->session->userdata('Nombres') ?></strong>
                                         </span> <span class="text-muted text-xs block">
-                                            <?php 
-                                            if($this->session->userdata('Tipo') == '1'){
+                                            <?php
+                                            if ($this->session->userdata('Tipo') == '1') {
                                                 echo "Administrador";
-                                            }else{
+                                            } else {
                                                 echo "Docente";
                                             }
                                             ?> 
                                             <!--<b class="caret"></b>-->
                                         </span>
                                     </span> </a>
-<!--                                <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                    <li><a href="profile.html">Perfil</a></li>
-                                    <li><a href="contacts.html">Contacto</a></li>
-                                    <li><a href="mailbox.html">Mailbox</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="login.html">Desconectar</a></li>
-                                </ul>-->
+                                <!--                                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                                                    <li><a href="profile.html">Perfil</a></li>
+                                                                    <li><a href="contacts.html">Contacto</a></li>
+                                                                    <li><a href="mailbox.html">Mailbox</a></li>
+                                                                    <li class="divider"></li>
+                                                                    <li><a href="login.html">Desconectar</a></li>
+                                                                </ul>-->
                             </div>
                             <div class="logo-element">
                                 UCV
@@ -118,6 +118,8 @@
                         $cargaropcionpadre = $this->cargas->cargaropcionpadre();
                         $cargaropcionhijo = $this->cargas->cargaropcionhijo();
                         $cargaemail = $this->cargas->cargaemail();
+                        $cargarincidencias = $this->cargas->cargarincidencias();
+                        $cargarincidenciasasig = $this->cargas->cargarincidenciasasig();
                         $bandejamail = $this->cargas->bandejamail();
                         if ($cargaropcionpadre) {
                             foreach ($cargaropcionpadre as $oppadre) {
@@ -192,8 +194,8 @@
                                     ?>
                                     <li>
                                         <div class="text-center link-block">
-                                            <a href="../mailbox/inbox">
-                                                <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                            <a href="<?php echo URL_MAIN ?>/mailbox/inbox">
+                                                <i class="fa fa-envelope"></i> <strong>Ver Mensajes</strong>
                                             </a>
                                         </div>
                                     </li>
@@ -201,44 +203,24 @@
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                                    <i class="fa fa-bell"></i>  <span class="label label-primary"><?php echo $cargarincidencias[0]['incidenciacount']+$cargarincidenciasasig[0]['incidenciacount2'] ?></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-alerts">
                                     <li>
-                                        <a href="mailbox.html">
-                                            <div>
-                                                <i class="fa fa-envelope fa-fw"></i> You have 16 messages
-                                                <span class="pull-right text-muted small">4 minutes ago</span>
-                                            </div>
-                                        </a>
+                                        <a href="<?php echo URL_MAIN ?>/procesos/requerimiento/bandeja">Tienes <?php echo $cargarincidenciasasig[0]['incidenciacount2'] ?> incidencia por revisar.</a>
                                     </li>
-                                    <li class="divider"></li>
+                                    <br>
                                     <li>
-                                        <a href="profile.html">
-                                            <div>
-                                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                                <span class="pull-right text-muted small">12 minutes ago</span>
-                                            </div>
-                                        </a>
+                                         <a href="<?php echo URL_MAIN ?>/procesos/bandejatecnico">Tienes <?php echo $cargarincidencias[0]['incidenciacount'] ?> incidencia asignadas.</a>
                                     </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="grid_options.html">
-                                            <div>
-                                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                                <span class="pull-right text-muted small">4 minutes ago</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
+<!--                                    <li class="divider"></li>
                                     <li>
                                         <div class="text-center link-block">
-                                            <a href="notifications.html">
-                                                <strong>See All Alerts</strong>
-                                                <i class="fa fa-angle-right"></i>
+                                            <a href="../procesos/bandejatecnico">
+                                                <i class="fa fa-envelope"></i> <strong>Ver Incidencias</strong>
                                             </a>
                                         </div>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </li>
 

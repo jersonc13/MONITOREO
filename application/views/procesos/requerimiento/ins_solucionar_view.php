@@ -18,7 +18,7 @@
         </fieldset>
         <div class="form-group">
             <div class="col-sm-4 col-sm-offset-2">
-                <button class="btn btn-white" type="submit">Cancelar</button>
+                <button class="btn btn-white" onclick="regresa_pantalla()">Cancelar</button>
                 <button id="btnregistro" class="btn btn-primary" type="submit">Solucionar</button>
             </div>
         </div>

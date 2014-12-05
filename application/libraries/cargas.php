@@ -16,6 +16,19 @@ class Cargas {
         return $CI->cargaremail->da_bandejacount();
     }
     
+    public function cargarincidencias() {
+        $CI = & get_instance();
+        $CI->load->model('mailbox/inbox_model', 'cargaremail');
+        return $CI->cargaremail->da_incidenciascount();
+    }
+    
+    public function cargarincidenciasasig() {
+        $CI = & get_instance();
+        $CI->load->model('mailbox/inbox_model', 'cargaremail');
+        return $CI->cargaremail->da_incidenciasasigcount();
+    }
+    
+    
     public function bandejamail() {
         $CI = & get_instance();
         $CI->load->model('mailbox/inbox_model', 'cargaremail');

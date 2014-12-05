@@ -31,9 +31,9 @@ class Ambiente extends CI_Controller {
         $validar = $this->ambiente_model->dbregistrar($_POST['txttipoambiente'],$_POST['txtambiente'],$_POST['txtdescripcion']);
 
         if ($validar) {
-            echo "1";
+            echo "Registro Exitoso";
         } else {
-            echo "0";
+            echo "Error al Registrar";
         }
     }
 

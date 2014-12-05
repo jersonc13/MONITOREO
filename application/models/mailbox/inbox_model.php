@@ -85,6 +85,37 @@ class Inbox_model extends CI_Model {
         }
     }
     
+    function da_incidenciascount() {
+        $this->adampt->setParam($this->session->userdata('IDPer'));
+        $query = $this->adampt->consulta("shm_inc.USP_INC_S_INCIDENCIA_count");
+        if (count($query) > 0) {
+            return $query;
+        } else {
+            return null;
+        }
+    }
+    
+    function da_incidenciasasigcount() {
+        $this->adampt->setParam($this->session->userdata('IDPer'));
+        $query = $this->adampt->consulta("shm_inc.USP_INC_S_INCIDENCIAASIG_count");
+        if (count($query) > 0) {
+            return $query;
+        } else {
+            return null;
+        }
+    }
+
+    public function reportes( $accion ){
+        
+        $this->adampt->setParam( $accion );
+        $query = $this->adampt->consulta("shm_inc.USP_INC_S_REPORTES");
+        if (count($query) > 0) {
+            return $query;
+        } else {
+            return null;
+        }
+    }
+    
 
 }
 

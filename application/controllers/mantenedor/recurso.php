@@ -50,9 +50,9 @@ class Recurso extends CI_Controller {
         $validar = $this->recurso_model->dbregistrar($cbotiporecurso, $txtcodigopatrimonial, $txtserie, $cbomarca, $txtmodelo, $cboambiente, $txtfechacompra, $txtfechagarantia, $txtcaracteristicas, $txtobservaciones, $txtfechavida, $txtruta, $txthost, $txtip);
 
         if ($validar) {
-            echo "1";
+            echo "Registro Exitoso";
         } else {
-            echo "0";
+            echo "Error al registrar";
         }
     }
 

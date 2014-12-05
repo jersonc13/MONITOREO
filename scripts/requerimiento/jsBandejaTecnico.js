@@ -6,14 +6,14 @@ $(function(){
     $("#listar_anc_mis_incidencias").bind({
         click:function(evt){
             evt.preventDefault();
-            get_page('bandejatecnico/vistaGet/BANDEJAMISCASOS', 'qry_casos_asignados');
+            get_page('bandejatecnico/vistaGet/BANDEJAMISCASOS_realiza', 'qry_casos_asignados');
         }
     });
 });
 
-window.onload = function() {
+// window.onload = function() {
     setInterval(actualizargrilla, 6000);
-}
+// }
 
 function actualizargrilla() {
     get_page('bandejatecnico/vistaGet/BANDEJA', 'mostrar_qry');

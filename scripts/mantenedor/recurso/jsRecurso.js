@@ -12,7 +12,7 @@ $(function() {
                 url: "recurso/registrar",
                 data: $(form).serialize(),
                 success: function(data) {
-                    if (data == '1') {
+                    if (data == 'Registro Exitoso') {
                         alert("Datos ingresados correctamente");
                         document.getElementById("frmRecursoIns").reset();
                     } else {

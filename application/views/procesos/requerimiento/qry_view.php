@@ -20,7 +20,7 @@
 			<td><?php echo $listar['estado'] ?></td>
 			<td>
 				<?php 
-				if ($accionx == 'BANDEJAMISCASOS') {
+				if ($accionx == 'BANDEJAMISCASOS_realiza') {
 					?>
 					<a href="#" class="btn btn-sm blue"  onclick="getsolucionar(<?php echo $listar['nAReqId'] ?>)" >
 						<i class="fa fa-envelope"></i>

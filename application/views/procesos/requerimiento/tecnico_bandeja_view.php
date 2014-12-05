@@ -71,8 +71,8 @@
 
                     <div class="tab-pane " id="tab_1">
                         <div id="qry_casos_asignados">
-                            Apareceran los casos Asignados a Su persona
-                            <i><strong>Coming Soon...</strong></i>
+                            Por favor espere...
+                            <i><strong>Cargando datos...</strong></i>
                         </div>
                     </div>
 

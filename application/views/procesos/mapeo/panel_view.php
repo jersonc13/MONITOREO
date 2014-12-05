@@ -6,6 +6,7 @@
         <br><br>
         <div id='mostrar_qry'>
             <div class="col-md-6">
+                <?php $conteo = 0; ?>
                 <table width="80%">                
                     <tr>
                         <?php foreach ($listarRecurso as $key => $listar) { ?>
@@ -18,7 +19,8 @@
                             $ip = explode('.', $listar['cRecIp']);
                             $ip = sprintf('%02x%02x%02x%02x', $ip[0], $ip[1], $ip[2], $ip[3]);
                             $hexa = $ip . "-FFFF-0000-0000-000000000000";
-                            ?><br>
+                            ?>
+                            <br>
                             <a href="#" onclick="listarClient(<?php echo "'" . $hexa . "'" ?>,<?php echo "'" . $listar['cRecHost'] . "'" ?>)">
                                 <?php echo $listar['cRecIp'];
                                 ?>
@@ -26,61 +28,17 @@
                         </center>
 
                         </td>
-                    <?php } ?>
-<!--                    <td td style="width: 25%">
-<center> 
-<img alt="image" width="50%" class="img-circle" src="<?php echo URL_GLOBALIMG ?>/compu.jpg" />
-</center>
-</td>-->
+                        <?php
+                        $conteo = $conteo + 1;
+                        if ($conteo > 3) {
+                            ?>
+                            </tr>
+                            <tr>
+                                <?php
+                            }
+                            ?>
+                        <?php } ?>
                     </tr>
-                    <!--
-                                        <tr>
-                                            <td>
-                                        <center> <a href="#" onclick="listarClient('C0A87E28-FFFF-0000-0000-000000000000')">ip: 192.168.126.15</a></center>
-                                        </td>
-                                        <td>
-                                        <center> <a href="#">ip: 192.168.126.16</a></center>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                            <td td style="width: 25%">
-                                        <center>
-                                            <img alt="image" width="50%" class="img-circle" src="<?php echo URL_GLOBALIMG ?>/compu.jpg" />
-                                        </center>
-                                        </td>
-                                        <td td style="width: 25%">
-                                        <center>
-                                            <img alt="image" width="50%" class="img-circle" src="<?php echo URL_GLOBALIMG ?>/compu.jpg" />
-                                        </center>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                            <td> 
-                                        <center> <a href="#">ip: 192.168.126.17</a></center> 
-                                        </td>
-                                        <td> 
-                                        <center><a href="#">ip: 192.168.126.22</a></center>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                            <td td style="width: 25%">
-                                        <center>
-                                            <img alt="image" width="50%" class="img-circle" src="<?php echo URL_GLOBALIMG ?>/compu.jpg" /></center>
-                                        </td>
-                                        <td td style="width: 25%">
-                                        <center>
-                                            <img alt="image" width="50%" class="img-circle" src="<?php echo URL_GLOBALIMG ?>/compu.jpg" />
-                                        </center>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                            <td> 
-                                        <center><a href="#">ip: 192.168.126.18</a></center>
-                                        </td>
-                                        <td> 
-                                        <center><a href="#">ip: 192.168.126.19</a></center> 
-                                        </td>
-                                        </tr>-->
                 </table>
                 <!-- END PAGE TITLE & BREADCRUMB-->
             </div>
@@ -91,6 +49,7 @@
                         <tr>
                             <th>IP</th>
                             <th>URL</th>
+                            <th>FECHA</th>
                             <th>Laboratorio</th>                  
                             <!--<th>Opciones</th>-->          
                         </tr>
@@ -100,6 +59,7 @@
                             <tr>
                                 <td><?php echo long2ip(substr("0X" . $listar['clientIP'], 0, 10)) ?></td>
                                 <td><?php echo $listar['uri'] ?></td>
+                                <td><?php echo $listar['logTime'] ?></td>
                                 <td><?php echo $listar['SrcNetwork'] ?></td>
                             </tr>
                         <?php } ?>

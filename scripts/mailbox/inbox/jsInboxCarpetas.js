@@ -5,7 +5,7 @@ function nuevomensaje() {
         cache: false,
         success: function(data) {
             $("#divinboxx").html(data);
-//            alert(data);
+        //            alert(data);
         },
         error: function() {
             alert("Ha ocurrido un error, vuelva a intentarlo.");
@@ -23,7 +23,7 @@ function reenviarmensaje() {
         },
         success: function(data) {
             $("#divinboxx").html(data);
-//            alert(data);
+        //            alert(data);
         },
         error: function() {
             alert("Ha ocurrido un error, vuelva a intentarlo.");
@@ -41,7 +41,7 @@ function respondermensaje() {
         },
         success: function(data) {
             $("#divinboxx").html(data);
-//            alert(data);
+        //            alert(data);
         },
         error: function() {
             alert("Ha ocurrido un error, vuelva a intentarlo.");
@@ -55,7 +55,7 @@ function bandejamensaje() {
         cache: false,
         success: function(data) {
             $("#divinboxx").html(data);
-//            alert(data);
+        //            alert(data);
         },
         error: function() {
             alert("Ha ocurrido un error, vuelva a intentarlo.");
@@ -70,7 +70,7 @@ function eliminadosmensaje() {
         cache: false,
         success: function(data) {
             $("#divinboxx").html(data);
-//            alert(data);
+        //            alert(data);
         },
         error: function() {
             alert("Ha ocurrido un error, vuelva a intentarlo.");
@@ -85,7 +85,7 @@ function enviadosmensaje() {
         cache: false,
         success: function(data) {
             $("#divinboxx").html(data);
-//            alert(data);
+        //            alert(data);
         },
         error: function() {
             alert("Ha ocurrido un error, vuelva a intentarlo.");
@@ -104,6 +104,10 @@ function enviarmensaje() {
             txtcontenido: document.getElementById('txtcontenido').innerHTML
         },
         success: function(data) {
+            $(":text").each(function(){	
+                $($(txtasunto)).val('');
+            });
+            document.getElementById("txtcontenido").innerHTML="";
             alert("Envio de mensaje Exitoso");
         },
         error: function() {
@@ -146,7 +150,7 @@ function eliminarcorreo() {
         success: function(data) {
             alert("Mensaje Eliminado.");
             $("#divinboxx").html(data);
-//            alert(data);
+        //            alert(data);
         },
         error: function() {
             alert("Ha ocurrido un error, vuelva a intentarlo.");
