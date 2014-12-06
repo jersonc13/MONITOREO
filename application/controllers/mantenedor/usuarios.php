@@ -50,10 +50,27 @@ class Usuarios extends CI_Controller {
         $data['editarUsuario'] = $this->usuarios_model->dblistarUsuarios('qry_id', $nidvalor);
         $this->load->view('mantenedor/usuarios/upd_view', $data);
     }
+    
+    function editarContrasena() {
+        $nidvalor = $_POST['nidvalor'];
+        $data['idusuario'] = $nidvalor;
+        $this->load->view('mantenedor/usuarios/updcontrasena_view', $data);
+    }
 
     function guardarEditar() {
 
         $validar = $this->usuarios_model->dbregistrareditar($_POST['txtidusuarios'], $_POST['txtcusunick'], $_POST['cboestado']);
+
+        if ($validar) {
+            echo "1";
+        } else {
+            echo "0";
+        }
+    }
+    
+    function guardarEditarContra() {
+
+        $validar = $this->usuarios_model->dbregistrareditarcontra($_POST['txtidusuarios'], $_POST['txtcontrasena']);
 
         if ($validar) {
             echo "1";

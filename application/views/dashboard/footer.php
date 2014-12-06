@@ -45,6 +45,7 @@
 <script src="<?php echo URL_GLOBALJS ?>/demo/sparkline-demo.js"></script>
 
 <script src="<?php echo URL_SCRIPTS ?>/jsGeneral.js"></script>
+<script src="<?php echo URL_SCRIPTS ?>/jsConfig.js"></script>
 
 <!-- Data Tables -->
 <script src="<?php echo URL_GLOBALJS ?>/plugins/dataTables/jquery.dataTables.js"></script>

@@ -27,4 +27,13 @@ class Index extends CI_Controller {
         }
     }
 
+
+    function verificarContadores(){
+        // $data['bandeja_count']         = $this->inbox_model->da_bandejacount();
+        $data['bandeja_count']         = $this->inbox_model->da_bandejacount();
+        $data['cargarincidencias']     = $this->cargas->cargarincidencias();
+        $data['cargarincidenciasasig'] = $this->cargas->cargarincidenciasasig();
+        echo json_encode( $data );
+    }
+
 }

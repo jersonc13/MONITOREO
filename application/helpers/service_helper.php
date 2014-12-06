@@ -10,6 +10,15 @@ function creaCombo($query) {
     return $data;
 }
 
+//Convertir a Hexa
+function convertirhexa($variable) {
+    $ip = explode('.', $variable);
+    $ip = sprintf('%02x%02x%02x%02x', $ip[0], $ip[1], $ip[2], $ip[3]);
+    $hexa = $ip . "-FFFF-0000-0000-000000000000";
+    return $hexa;
+}
+
+
 // CREA UN SELECT (COMBO) CON:  Seleccionar 
 function creaComboCSO($query) {
     $array = toArrayNumerico($query);

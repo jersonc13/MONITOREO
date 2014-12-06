@@ -21,7 +21,7 @@ define('DIR_WRITE_MODE', 0777);
 
 define('SERVER_AP', '172.20.228.226');
 define('SERVER_PY', 'MONITOREO');
-define('SERVER_DB', 'localhost');
+define('SERVER_DB', '172.20.228.226');
 define('USSER_DB', 'sa');
 define('NAME_DB','sigpi');
 // define('SERVER_DB', '192.168.0.4');

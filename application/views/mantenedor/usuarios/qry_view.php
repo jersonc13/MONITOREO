@@ -22,7 +22,8 @@
                                             <td><?php echo $listar['cUsuNick'] ?></td>
                                             <td><?php echo $listar['estado'] ?></td>
                                             <td>
-                                                <a href="#" class="btn btn-sm blue" onclick="editarUsuario(<?php echo $listar['nUsuId'] ?>)"><i class="fa fa-edit"></i></a>
+                                                <a href="#" title="editar" class="btn btn-sm blue" onclick="editarUsuario(<?php echo $listar['nUsuId'] ?>)"><i class="fa fa-edit"></i></a>
+                                                <a href="#" title="contraseña" class="btn btn-sm blue" onclick="cambiarContrasena(<?php echo $listar['nUsuId'] ?>)"><i class="fa fa-pencil-square"></i></a>
                                             </td>
                                         </tr>
                                     <?php } ?>

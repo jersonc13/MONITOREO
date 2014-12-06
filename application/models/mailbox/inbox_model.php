@@ -105,9 +105,12 @@ class Inbox_model extends CI_Model {
         }
     }
 
-    public function reportes( $accion ){
+    public function requerimientosAtendidos( $accion, $ini, $fin, $estado){
         
         $this->adampt->setParam( $accion );
+        $this->adampt->setParam( $estado );
+        $this->adampt->setParam( $ini );
+        $this->adampt->setParam( $fin );
         $query = $this->adampt->consulta("shm_inc.USP_INC_S_REPORTES");
         if (count($query) > 0) {
             return $query;

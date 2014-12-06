@@ -9,6 +9,7 @@ class Repincidencia extends CI_Controller {
         parent::__construct();
         $this->_validaracceso();
         $this->load->model('mailbox/inbox_model');
+        $this->load->library('PHPJasperXML');
     }
 
     function _validaracceso() {
@@ -21,18 +22,21 @@ class Repincidencia extends CI_Controller {
     }
 
     function index() {
-        $this->load->view('reportes/cantidad_casos');
+        $data['main_content'] = 'reportes/cantidad_casos';
+        $data['titulo'] = 'INBOX | SIM';
+        $data['bandeja_count'] = $this->inbox_model->da_bandejacount();
+        $data['resultado'] = $this->inbox_model->da_bandejamail();
+        $this->load->view( 'dashboard/template', $data );
     }
-    function ver() {
-
-        $this->load->library('PHPJasperXML');
+    function verAtendidos($fechaIni, $fechafin,$estado) {
+        
         //display errors should be off in the php.ini file
         // ini_set('display_errors', 0);
          // echo FCPATH."report/report1.jrxml";
          // exit();
         //setting the path to the created jrxml file
         $xml =  @simplexml_load_file(FCPATH."report/report1.jrxml");
-        $rs = $this->inbox_model->reportes('requerimiento');
+        $rs = $this->inbox_model->requerimientosAtendidos('requerimiento',$fechaIni,$fechafin, $estado);
         // print_p( $rs ); exit();
         $PHPJasperXML = new PHPJasperXML();
         // $PHPJasperXML->debugsql=true;

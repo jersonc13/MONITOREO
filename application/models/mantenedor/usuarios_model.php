@@ -29,6 +29,15 @@ class Usuarios_model extends CI_Model {
         $result = $this->adampt->ejecuta();
         return $this->adampt->getParamOut1();
     }
+    
+    function dbregistrareditarcontra($txtidusuarios, $txtcontrasena) {
+        $this->adampt->setParam($txtidusuarios);
+        $this->adampt->setParam($txtcontrasena);
+        $this->adampt->setParamOut1();
+        $this->adampt->prepara('shm_seg.USP_SEG_U_USUARIOS_Contrasena');
+        $result = $this->adampt->ejecuta();
+        return $this->adampt->getParamOut1();
+    }
 
 }
 

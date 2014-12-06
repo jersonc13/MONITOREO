@@ -169,7 +169,7 @@
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-envelope"></i>  <span class="label label-warning"><?php echo $cargaemail[0]['bandeja_count'] ?></span>
+                                    <i class="fa fa-envelope"></i>  <span class="label label-warning" id="contador_bandeja"><?php echo $cargaemail[0]['bandeja_count'] ?></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-messages">
 
@@ -203,15 +203,15 @@
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-bell"></i>  <span class="label label-primary"><?php echo $cargarincidencias[0]['incidenciacount']+$cargarincidenciasasig[0]['incidenciacount2'] ?></span>
+                                    <i class="fa fa-bell"></i>  <span class="label label-primary" id="requerimiento_total"><?php echo $cargarincidencias[0]['incidenciacount']+$cargarincidenciasasig[0]['incidenciacount2'] ?></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-alerts">
                                     <li>
-                                        <a href="<?php echo URL_MAIN ?>/procesos/requerimiento/bandeja">Tienes <?php echo $cargarincidenciasasig[0]['incidenciacount2'] ?> incidencia por revisar.</a>
+                                        <a href="<?php echo URL_MAIN ?>/procesos/requerimiento/bandeja" id="incidencias_revisar" >Tienes <?php echo $cargarincidenciasasig[0]['incidenciacount2'] ?> incidencia por revisar.</a>
                                     </li>
                                     <br>
                                     <li>
-                                         <a href="<?php echo URL_MAIN ?>/procesos/bandejatecnico">Tienes <?php echo $cargarincidencias[0]['incidenciacount'] ?> incidencia asignadas.</a>
+                                         <a href="<?php echo URL_MAIN ?>/procesos/bandejatecnico" id="incidencias_asignadas">Tienes <?php echo $cargarincidencias[0]['incidenciacount'] ?> incidencia asignadas.</a>
                                     </li>
 <!--                                    <li class="divider"></li>
                                     <li>
