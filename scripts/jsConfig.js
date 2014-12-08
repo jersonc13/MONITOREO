@@ -1,4 +1,4 @@
-var local = window.location.hostname;
+var local = window.location.host;
 var url = "http://"+local+"/MONITOREO/dashboard/index/verificarContadores";
 
 
@@ -23,7 +23,7 @@ function actualizarindicadores() {
 		},
 		error:function(er){
 			console.log(er.statusText);
-			alert("Houston, tenemos un problema... Creo que has roto algo...");
+			console.log("Houston, tenemos un problema... Creo que has roto algo...");
 		}
 	});
 	

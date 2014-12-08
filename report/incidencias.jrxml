@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="b106f9d6-edde-4fdf-ae1c-de36aa86ea8a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="usuario" class="java.lang.String"/>
+	<field name="agente" class="java.lang.String"/>
+	<field name="uri" class="java.lang.String"/>
+	<field name="srcNetwork" class="java.lang.String"/>
+	<title>
+		<band height="109" splitType="Stretch">
+			<image>
+				<reportElement x="258" y="-13" width="544" height="122" uuid="32ce920d-4af3-4585-a6e4-0fbbba300803"/>
+				<imageExpression><![CDATA["C:\\xampp\\htdocs\\MONITOREO\\report\\Pie_Google.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="2" y="0" width="273" height="25" uuid="eb4d7d35-81e9-477f-9cfc-e09fdc01b195"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INCIDENCIAS POR RECURSO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="73" y="1" width="100" height="20" uuid="17e65196-45b2-4a03-986b-fc7b9ddefb63"/>
+				<text><![CDATA[usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="0" width="100" height="20" uuid="b6336d12-14d5-49eb-b527-8260455e9388"/>
+				<text><![CDATA[agente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="0" width="100" height="20" uuid="2c453ccc-b3d6-4b3b-b362-914cc0fefc56"/>
+				<text><![CDATA[uri]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="1" width="100" height="20" uuid="a2ccff58-9116-4111-b4be-a7d10f23d3e0"/>
+				<text><![CDATA[srcNetwork]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21">
+			<textField>
+				<reportElement x="73" y="1" width="100" height="20" uuid="48ffcebd-b280-4c0d-a12d-fc9ce1e12dd5"/>
+				<textFieldExpression><![CDATA[$F{usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="0" width="100" height="20" uuid="322a2a21-f3ec-42af-8622-309a7d13479c"/>
+				<textFieldExpression><![CDATA[$F{agente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="0" width="100" height="20" uuid="a1f6468d-3467-4161-af5d-51b8bea2cd1d"/>
+				<textFieldExpression><![CDATA[$F{uri}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="1" width="100" height="20" uuid="092b103e-bcec-4ccb-a77e-2880cd400d90"/>
+				<textFieldExpression><![CDATA[$F{srcNetwork}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

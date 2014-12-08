@@ -40,7 +40,7 @@ class Recurso_model extends CI_Model {
             return $query;
         } else {
             return null;
-        }       
+        }
     }
 
     public function CambiarEstado($nRecId,$estado) {
@@ -50,6 +50,19 @@ class Recurso_model extends CI_Model {
         $this->adampt->prepara('shm_inc.USP_REQ_U_REQUERIMIENTO');
         $result = $this->adampt->ejecuta();
         return $this->adampt->getParamOut1();
+    }
+
+    public function listarIps($r){
+        
+        $this->adampt->setParam( $r );
+        // $this->adampt->setParam( $this->_idPer );
+        // print_p($this->adampt);exit();
+        $query = $this->adampt->consulta('shm_inc.USP_INC_S_RECURSOS_IP');
+        if (count($query) > 0) {
+            return $query;
+        } else {
+            return null;
+        }       
     }
 }
 

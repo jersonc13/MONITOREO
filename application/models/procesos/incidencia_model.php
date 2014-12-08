@@ -25,6 +25,22 @@ class Incidencia_model extends CI_Model {
 			return null;
 		}	
 	}
+
+
+	public function incidenciasReport( $ip, $ini, $fin){
+	    
+	    $this->adampt->setParam( $ip );
+	    // $this->adampt->setParam( $estado );
+	    $this->adampt->setParam( $ini );
+	    $this->adampt->setParam( $fin );
+	    $query = $this->adampt->consulta("shm_inc.USP_INC_S_REPORTE_INCIDENCIAS");
+	    if (count($query) > 0) {
+	        return $query;
+	    } else {
+	        return null;
+	    }
+	}
+
 }
 
 /* End of file incidencia_model.php */

@@ -1,5 +1,46 @@
-<div class="mail-box">
-<h2>Reporte de Requerimientos</h2>
+<div class="botonera">
+	<h2>Tipos de Reporte</h2>
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="widget style1 navy-bg">
+				<div class="row vertical-align">
+					<div class="col-xs-3">
+						<i class="fa fa-phone fa-3x"></i>
+					</div>
+					<div class="col-xs-9 text-right">
+						<h2 class="font-bold" id="btnrequerimientos" style="cursor:pointer">Requerimientos</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="widget style1 navy-bg">
+				<div class="row vertical-align">
+					<div class="col-xs-3">
+						<i class="fa fa-rss fa-3x"></i>
+					</div>
+					<div class="col-xs-9 text-right">
+						<h2 class="font-bold" id="btnIncidencias" style="cursor:pointer">Incidencias</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-2">
+			<div class="widget style1 lazur-bg">
+				<div class="row vertical-align">
+					<div class="col-xs-3">
+						<i class="fa fa-phone fa-3x"></i>
+					</div>
+					<div class="col-xs-9 text-right">
+						<h2 class="font-bold">120</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="carga_reportes" class="mail-box">
+	<h2>Reporte de Requerimientos</h2>
 	<div class="mail-body">
 		<div class="ibox-content">
 			<form role="form" class="form-inline">		
@@ -36,3 +77,9 @@
 	<div class="clearfix"></div>
 </div>
 <script src="<?php echo URL_SCRIPTS ?>/reportes/jsAtendidos.js" type="text/javascript"></script>
+
+
+
+<!-- Popup -->
+<link rel="stylesheet" href="<?php echo URL_GLOBALJS ?>/colorbox/colorbox.css">
+<script src="<?php echo URL_GLOBALJS ?>/colorbox/jquery.colorbox.js"></script>

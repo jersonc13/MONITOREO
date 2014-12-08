@@ -9,6 +9,14 @@ $(function(){
 	    ,format: 'dd/mm/yyyy'
 	    // ,startDate: '1d'
 	});
+
+
+	$("#btnIncidencias").bind({
+	    click:function(evt){
+	        evt.preventDefault();
+	        get_page('repincidencia/vistaIncidencias', 'carga_reportes');
+	    }
+	});
 })
 function verReporte(){
 	var find = '/';
@@ -21,7 +29,7 @@ function verReporte(){
 	var fechafin = $('#txtfechafin').val();
 	var fechafin2 = fechafin.replace(re, '-');
 	// console.log(fechafin2);
-	var hostname = window.location.hostname;
+	var hostname = window.location.host;
 	var url = 'http://' + hostname + '/MONITOREO/reportes/repincidencia/verAtendidos/' + fechaini2 + '/' + fechafin2 +'/'+estado+ '/';
 	window.open(url,'_blank');
 	// console.log(url);
@@ -32,3 +40,6 @@ function verReporte(){
 	//     //stuff to do after the iframe has loaded
 	// });
 }
+// function loadIncidencia(){
+// 	getpa
+// }
