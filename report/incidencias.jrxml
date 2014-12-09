@@ -38,11 +38,14 @@
 				<text><![CDATA[Recurso]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="103" y="61" width="100" height="20" uuid="a4352601-685f-41f7-b77e-d0f15bfcecf0"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="103" y="74" width="172" height="20" uuid="a4352601-685f-41f7-b77e-d0f15bfcecf0"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{UsuarioEmisor}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="3" y="61" width="100" height="20" uuid="1966b368-1d05-4411-8df9-130583cc65a6"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="74" width="100" height="20" uuid="1966b368-1d05-4411-8df9-130583cc65a6"/>
 				<text><![CDATA[Emitido Por]]></text>
 			</staticText>
 		</band>
