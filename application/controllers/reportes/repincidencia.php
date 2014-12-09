@@ -83,8 +83,13 @@ class Repincidencia extends CI_Controller {
         //setting the path to the created jrxml file
         $xml =  @simplexml_load_file(FCPATH."report/report1.jrxml");
         $rs = $this->inbox_model->requerimientosAtendidos('requerimiento',$fechaIni,$fechafin, $estado);
+
+
+        $nombre_user = $this->session->userdata('Nombres');
+        $apellido_user = $this->session->userdata('Apellidos');
         // print_p( $rs ); exit();
         $PHPJasperXML = new PHPJasperXML();
+        $PHPJasperXML->arrayParameter=array("UsuarioEmisor"=>$apellido_user.' '.$nombre_user);
         // $PHPJasperXML->debugsql=true;
         // $PHPJasperXML->arrayParameter=array("parameter1"=>1);
         $PHPJasperXML->xml_dismantle($xml);

@@ -7,6 +7,7 @@
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="UsuarioEmisor" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -28,6 +29,17 @@
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REQUERIMIENTOS SOLICITADOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="101" y="57" width="172" height="20" uuid="8f0a08c9-8de1-4123-be96-14732012f3dc"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{UsuarioEmisor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="2" y="57" width="100" height="20" uuid="26fd0a95-af0c-4cde-a885-83b56327dce0"/>
+				<text><![CDATA[Emitido Por]]></text>
 			</staticText>
 		</band>
 	</title>
