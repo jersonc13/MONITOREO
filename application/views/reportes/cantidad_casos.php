@@ -25,7 +25,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-2">
+<!-- 		<div class="col-lg-2">
 			<div class="widget style1 lazur-bg">
 				<div class="row vertical-align">
 					<div class="col-xs-3">
@@ -36,7 +36,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 <div id="carga_reportes" class="mail-box">

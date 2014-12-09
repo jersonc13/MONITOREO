@@ -32,14 +32,17 @@ class Repincidencia extends CI_Controller {
     }
 
 
-    function vistaIncidenciasRPT( $estado, $fechaIni, $fechafin ){
-        $ip = convertirhexa($estado);
+    function vistaIncidenciasRPT( $nombre,$estado, $fechaIni, $fechafin ){
+        $ip = strtoupper(convertirhexa($estado));
 
         $xml =  @simplexml_load_file(FCPATH."report/incidencias.jrxml");
         $rs = $this->incidencia_model->incidenciasReport($ip,$fechaIni,$fechafin);
+        // print_p($ip);
+        // print_p($rs);
+        // exit();
         $PHPJasperXML = new PHPJasperXML();
         // $PHPJasperXML->debugsql=true;
-        // $PHPJasperXML->arrayParameter=array("parameter1"=>1);
+        $PHPJasperXML->arrayParameter=array("NombrePc"=>$nombre);
         $PHPJasperXML->xml_dismantle($xml);
 
         // print_p($rs);
@@ -57,6 +60,17 @@ class Repincidencia extends CI_Controller {
         $data['direccionesIP'] = $this->recurso_model->listarIps();
         // print_p( $data );exit();
         $this->load->view('reportes/INCIDENCIA_REP',$data);
+    }
+    function verip(){
+        $data = $this->recurso_model->obtenerips();
+        print_p( long2ip(substr("0X".'C0A87E25-FFFF-0000-0000-000000000000',0,10) ) );
+        // print_p($data);
+        // exit();
+        foreach ($data as $fila) {
+            // print_p( convertirhexa($fila['ClientIP']) );
+            print_p( long2ip(substr("0X".$fila['ClientIP'],0,10)));
+
+        }
     }
 
 

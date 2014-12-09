@@ -53,13 +53,14 @@
 		// console.log(re);
 		var fechaini = $('#txtfechaini').val();
 		var recurso = $('#cboRecurso option:selected').val();
+		var nombre = $('#cboRecurso option:selected').html();
 		var fechaini2 = fechaini.replace(re, '-');
 		// console.log(fechaini2);
 		var fechafin = $('#txtfechafin').val();
 		var fechafin2 = fechafin.replace(re, '-');
 		// console.log(fechafin2);
 		var hostname = window.location.host;
-		var url = 'http://' + hostname + '/MONITOREO/reportes/repincidencia/vistaIncidenciasRPT/' +recurso+ '/'+ fechaini2 + '/' + fechafin2 +'/';		
+		var url = 'http://' + hostname + '/MONITOREO/reportes/repincidencia/vistaIncidenciasRPT/' +nombre+ '/'+recurso+ '/'+ fechaini2 + '/' + fechafin2 +'/';		
 		// var url = 'http://' + hostname + '/MONITOREO/reportes/repincidencia/verAtendidos/' + fechaini2 + '/' + fechafin2 +'/'+estado+ '/';
 		window.open(url,'_blank');
 		// $.colorbox({

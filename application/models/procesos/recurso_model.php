@@ -64,6 +64,18 @@ class Recurso_model extends CI_Model {
             return null;
         }       
     }
+    public function obtenerips(){
+        
+        // $this->adampt->setParam( $r );
+        // $this->adampt->setParam( $this->_idPer );
+        // print_p($this->adampt);exit();
+        $query = $this->adampt->consulta('obtenerips');
+        if (count($query) > 0) {
+            return $query;
+        } else {
+            return null;
+        }       
+    }
 }
 
 /* End of file recurso_model.php */
