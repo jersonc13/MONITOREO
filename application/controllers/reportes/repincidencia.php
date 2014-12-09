@@ -36,13 +36,13 @@ class Repincidencia extends CI_Controller {
         $ip = strtoupper(convertirhexa($estado));
 
         $xml =  @simplexml_load_file(FCPATH."report/incidencias.jrxml");
-        $rs = $this->incidencia_model->incidenciasReport($ip,$fechaIni,$fechafin);
         // print_p($ip);
-        // print_p($rs);
-        // exit();
+        $nombre_user = $this->session->userdata('Nombres');
+        $apellido_user = $this->session->userdata('Apellidos');
+        $rs = $this->incidencia_model->incidenciasReport($ip,$fechaIni,$fechafin);
         $PHPJasperXML = new PHPJasperXML();
         // $PHPJasperXML->debugsql=true;
-        $PHPJasperXML->arrayParameter=array("NombrePc"=>$nombre);
+        $PHPJasperXML->arrayParameter=array("NombrePc"=>$nombre,"UsuarioEmisor"=>$apellido_user.' '.$nombre_user);
         $PHPJasperXML->xml_dismantle($xml);
 
         // print_p($rs);
